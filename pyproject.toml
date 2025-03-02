@@ -15,7 +15,6 @@ package-mode = true
 python = "^3.10"
 nodetool-core = { git = "https://github.com/nodetool-ai/nodetool-core.git", rev = "main" }
 
-langchain-text-splitters = "0.3.4"
 llama-index = "0.12.13"
 llama-index-embeddings-ollama = "0.5.0"
 numpy = "1.26.4"
