@@ -2,7 +2,6 @@ from pydantic import Field
 from nodetool.workflows.processing_context import ProcessingContext
 from nodetool.metadata.types import TextChunk
 from nodetool.workflows.base_node import BaseNode
-import json
 from pydantic import Field
 from nodetool.workflows.processing_context import ProcessingContext
 from nodetool.workflows.base_node import BaseNode

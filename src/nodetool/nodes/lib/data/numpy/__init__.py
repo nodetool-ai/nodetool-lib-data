@@ -11,17 +11,34 @@ from enum import Enum
 from io import BytesIO
 import PIL.Image
 from matplotlib import pyplot as plt
-from sklearn.manifold import TSNE
 import seaborn as sns
 import numpy as np
 from pydantic import Field
-from typing import Any, Literal
-from nodetool.nodes.lib.audio.audio_helpers import numpy_to_audio_segment
+from typing import Any
 from nodetool.workflows.processing_context import ProcessingContext
 from nodetool.metadata.types import AudioRef, FolderRef, ImageRef
 from nodetool.workflows.base_node import BaseNode
 from nodetool.metadata.types import to_numpy
 from nodetool.metadata.types import NPArray
+from pydub import AudioSegment
+
+
+def numpy_to_audio_segment(arr: np.ndarray, sample_rate=44100) -> AudioSegment:
+    """
+    Convert a numpy array to an audio segment.
+
+    Args:
+        arr (np.ndarray): The numpy array to convert.
+        sample_rate (int): The sample rate of the audio segment.
+
+    Returns:
+        AudioSegment: The audio segment.
+    """
+    # Convert the float array to int16 format, which is used by WAV files.
+    arr_int16 = np.int16(arr * 32767.0).tobytes()
+
+    # Create a pydub AudioSegment from raw data.
+    return AudioSegment(arr_int16, sample_width=2, frame_rate=sample_rate, channels=1)
 
 
 def pad_arrays(a: np.ndarray, b: np.ndarray) -> Tuple[(np.ndarray, np.ndarray)]:
