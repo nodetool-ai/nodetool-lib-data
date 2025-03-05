@@ -1,0 +1,3568 @@
+{
+  "name": "nodetool-lib-data",
+  "description": "Nodetool nodes for data processing.",
+  "version": "0.6.0",
+  "authors": [
+    "Matthias Georgi <matti.georgi@gmail.com>"
+  ],
+  "nodes": [
+    {
+      "title": "HTMLSplitter",
+      "description": "Split HTML content into semantic chunks based on HTML tags.\n    html, text, semantic, tags, parsing",
+      "namespace": "lib.data.llama_index",
+      "node_type": "lib.data.llama_index.HTMLSplitter",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "document_id",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Document Id",
+          "description": "Document ID to associate with the HTML content"
+        },
+        {
+          "name": "text",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Text",
+          "description": "HTML content to split"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "text_chunk"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "document_id",
+        "text"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "JSONSplitter",
+      "description": "Split JSON content into semantic chunks.\n    json, parsing, semantic, structured",
+      "namespace": "lib.data.llama_index",
+      "node_type": "lib.data.llama_index.JSONSplitter",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "document_id",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Document Id",
+          "description": "Document ID to associate with the JSON content"
+        },
+        {
+          "name": "text",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Text",
+          "description": "JSON content to split"
+        },
+        {
+          "name": "include_metadata",
+          "type": {
+            "type": "bool"
+          },
+          "default": true,
+          "title": "Include Metadata",
+          "description": "Whether to include metadata in nodes"
+        },
+        {
+          "name": "include_prev_next_rel",
+          "type": {
+            "type": "bool"
+          },
+          "default": true,
+          "title": "Include Prev Next Rel",
+          "description": "Whether to include prev/next relationships"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "text_chunk"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "document_id",
+        "text",
+        "include_metadata",
+        "include_prev_next_rel"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Semantic Splitter",
+      "description": "Split text semantically.\n    chroma, embedding, collection, RAG, index, text, markdown, semantic",
+      "namespace": "lib.data.llama_index",
+      "node_type": "lib.data.llama_index.SemanticSplitter",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "embed_model",
+          "type": {
+            "type": "llama_model"
+          },
+          "default": {},
+          "title": "Embed Model",
+          "description": "Embedding model to use"
+        },
+        {
+          "name": "document_id",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Document Id",
+          "description": "Document ID to associate with the text content"
+        },
+        {
+          "name": "text",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Text",
+          "description": "Text content to split"
+        },
+        {
+          "name": "buffer_size",
+          "type": {
+            "type": "int"
+          },
+          "default": 1,
+          "title": "Buffer Size",
+          "description": "Buffer size for semantic splitting",
+          "min": 1.0,
+          "max": 100.0
+        },
+        {
+          "name": "threshold",
+          "type": {
+            "type": "int"
+          },
+          "default": 95,
+          "title": "Threshold",
+          "description": "Breakpoint percentile threshold for semantic splitting",
+          "min": 0.0,
+          "max": 100.0
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "text_chunk"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "embed_model",
+        "document_id",
+        "text",
+        "buffer_size",
+        "threshold"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Chart Renderer",
+      "description": "Node responsible for rendering chart configurations into image format using seaborn.\n    chart, seaborn, plot, visualization, data",
+      "namespace": "lib.data.seaborn",
+      "node_type": "lib.data.seaborn.ChartRenderer",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "chart_config",
+          "type": {
+            "type": "chart_config"
+          },
+          "default": {},
+          "title": "Chart Config",
+          "description": "The chart configuration to render."
+        },
+        {
+          "name": "width",
+          "type": {
+            "type": "int"
+          },
+          "default": 640,
+          "title": "Width",
+          "description": "The width of the chart in pixels.",
+          "min": 0.0,
+          "max": 10000.0
+        },
+        {
+          "name": "height",
+          "type": {
+            "type": "int"
+          },
+          "default": 480,
+          "title": "Height",
+          "description": "The height of the chart in pixels.",
+          "min": 0.0,
+          "max": 10000.0
+        },
+        {
+          "name": "data",
+          "type": {
+            "type": "any"
+          },
+          "title": "Data",
+          "description": "The data to visualize as a pandas DataFrame."
+        },
+        {
+          "name": "despine",
+          "type": {
+            "type": "bool"
+          },
+          "default": true,
+          "title": "Despine",
+          "description": "Whether to remove top and right spines."
+        },
+        {
+          "name": "trim_margins",
+          "type": {
+            "type": "bool"
+          },
+          "default": true,
+          "title": "Trim Margins",
+          "description": "Whether to use tight layout for margins."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "image"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "chart_config",
+        "width",
+        "height",
+        "data",
+        "despine",
+        "trim_margins"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Split Markdown",
+      "description": "Splits markdown text by headers while preserving header hierarchy in metadata.\n    markdown, split, headers\n\n    Use cases:\n    - Splitting markdown documentation while preserving structure\n    - Processing markdown files for semantic search\n    - Creating context-aware chunks from markdown content",
+      "namespace": "lib.data.langchain",
+      "node_type": "lib.data.langchain.MarkdownSplitter",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "text",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Markdown Text"
+        },
+        {
+          "name": "document_id",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Document Id",
+          "description": "Document ID to associate with the text"
+        },
+        {
+          "name": "headers_to_split_on",
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "tuple",
+                "type_args": [
+                  {
+                    "type": "str"
+                  },
+                  {
+                    "type": "str"
+                  }
+                ]
+              }
+            ]
+          },
+          "default": [
+            [
+              "#",
+              "Header 1"
+            ],
+            [
+              "##",
+              "Header 2"
+            ],
+            [
+              "###",
+              "Header 3"
+            ]
+          ],
+          "title": "Headers To Split On",
+          "description": "List of tuples containing (header_symbol, header_name)"
+        },
+        {
+          "name": "strip_headers",
+          "type": {
+            "type": "bool"
+          },
+          "default": true,
+          "title": "Strip Headers",
+          "description": "Whether to remove headers from the output content"
+        },
+        {
+          "name": "return_each_line",
+          "type": {
+            "type": "bool"
+          },
+          "default": false,
+          "title": "Return Each Line",
+          "description": "Whether to split into individual lines instead of header sections"
+        },
+        {
+          "name": "chunk_size",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "none"
+              }
+            ]
+          },
+          "title": "Chunk Size",
+          "description": "Optional maximum chunk size for further splitting"
+        },
+        {
+          "name": "chunk_overlap",
+          "type": {
+            "type": "int"
+          },
+          "default": 30,
+          "title": "Chunk Overlap",
+          "description": "Overlap size when using chunk_size"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "text_chunk"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "text",
+        "document_id",
+        "headers_to_split_on",
+        "strip_headers",
+        "return_each_line",
+        "chunk_size",
+        "chunk_overlap"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Split Recursively",
+      "description": "Splits text recursively using LangChain's RecursiveCharacterTextSplitter.\n    text, split, chunks\n\n    Use cases:\n    - Splitting documents while preserving semantic relationships\n    - Creating chunks for language model processing\n    - Handling text in languages with/without word boundaries",
+      "namespace": "lib.data.langchain",
+      "node_type": "lib.data.langchain.RecursiveTextSplitter",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "text",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Text"
+        },
+        {
+          "name": "document_id",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Document Id",
+          "description": "Document ID to associate with the text"
+        },
+        {
+          "name": "chunk_size",
+          "type": {
+            "type": "int"
+          },
+          "default": 1000,
+          "title": "Chunk Size",
+          "description": "Maximum size of each chunk in characters"
+        },
+        {
+          "name": "chunk_overlap",
+          "type": {
+            "type": "int"
+          },
+          "default": 200,
+          "title": "Chunk Overlap",
+          "description": "Number of characters to overlap between chunks"
+        },
+        {
+          "name": "separators",
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "str"
+              }
+            ]
+          },
+          "default": [
+            "\n\n",
+            "\n",
+            "."
+          ],
+          "title": "Separators",
+          "description": "List of separators to use for splitting, in order of preference"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "text_chunk"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "text",
+        "document_id",
+        "chunk_size",
+        "chunk_overlap",
+        "separators"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Split into Sentences",
+      "description": "Splits text into sentences using LangChain's SentenceTransformersTokenTextSplitter.\n    sentences, split, nlp\n\n    Use cases:\n    - Natural sentence-based text splitting\n    - Creating semantically meaningful chunks\n    - Processing text for sentence-level analysis",
+      "namespace": "lib.data.langchain",
+      "node_type": "lib.data.langchain.SentenceSplitter",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "text",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Text"
+        },
+        {
+          "name": "document_id",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Document Id",
+          "description": "Document ID to associate with the text"
+        },
+        {
+          "name": "chunk_size",
+          "type": {
+            "type": "int"
+          },
+          "default": 40,
+          "title": "Chunk Size",
+          "description": "Maximum number of tokens per chunk"
+        },
+        {
+          "name": "chunk_overlap",
+          "type": {
+            "type": "int"
+          },
+          "default": 5,
+          "title": "Chunk Overlap",
+          "description": "Number of tokens to overlap between chunks"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "text_chunk"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "text",
+        "document_id",
+        "chunk_size",
+        "chunk_overlap"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Abs Array",
+      "description": "Compute the absolute value of each element in a array.\n    array, absolute, magnitude\n\n    Use cases:\n    - Calculate magnitudes of complex numbers\n    - Preprocess data for certain algorithms\n    - Implement activation functions in neural networks",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.AbsArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "The input array to compute the absolute values from."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Add Array",
+      "description": "Performs addition on two arrays.\n    math, plus, add, addition, sum, +",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.AddArray",
+      "layout": "small",
+      "properties": [
+        {
+          "name": "a",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 0.0,
+          "title": "A"
+        },
+        {
+          "name": "b",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 0.0,
+          "title": "B"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "a",
+        "b"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Arg Max Array",
+      "description": "Find indices of maximum values along a specified axis of a array.\n    array, argmax, index, maximum\n\n    Use cases:\n    - Determine winning classes in classification tasks\n    - Find peaks in signal processing\n    - Locate best-performing items in datasets",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.ArgMaxArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "Input array"
+        },
+        {
+          "name": "axis",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "none"
+              }
+            ]
+          },
+          "title": "Axis",
+          "description": "Axis along which to find maximum indices"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "np_array"
+              },
+              {
+                "type": "int"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "axis"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Arg Min Array",
+      "description": "Find indices of minimum values along a specified axis of a array.\n    array, argmin, index, minimum\n\n    Use cases:\n    - Locate lowest-performing items in datasets\n    - Find troughs in signal processing\n    - Determine least likely classes in classification tasks",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.ArgMinArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "Input array"
+        },
+        {
+          "name": "axis",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "none"
+              }
+            ]
+          },
+          "title": "Axis",
+          "description": "Axis along which to find minimum indices"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "np_array"
+              },
+              {
+                "type": "int"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "axis"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Array To List",
+      "description": "Convert a array to a nested list structure.\n    array, list, conversion, type\n\n    Use cases:\n    - Prepare array data for JSON serialization\n    - Convert array outputs to Python data structures\n    - Interface array data with non-array operations",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.ArrayToList",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "Array to convert to list"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "any"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Array To Scalar",
+      "description": "Convert a single-element array to a scalar value.\n    array, scalar, conversion, type\n\n    Use cases:\n    - Extract final results from array computations\n    - Prepare values for non-array operations\n    - Simplify output for human-readable results",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.ArrayToScalar",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "Array to convert to scalar"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "float"
+              },
+              {
+                "type": "int"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Binary Operation",
+      "description": "",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.BinaryOperation",
+      "layout": "small",
+      "properties": [
+        {
+          "name": "a",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 0.0,
+          "title": "A"
+        },
+        {
+          "name": "b",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 0.0,
+          "title": "B"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "a",
+        "b"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Convert To Array",
+      "description": "Convert PIL Image to normalized tensor representation.\n    image, tensor, conversion, normalization\n\n    Use cases:\n    - Prepare images for machine learning models\n    - Convert between image formats for processing\n    - Normalize image data for consistent calculations",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.ConvertToArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "image",
+          "type": {
+            "type": "image"
+          },
+          "default": {},
+          "title": "Image",
+          "description": "The input image to convert to a tensor. The image should have either 1 (grayscale), 3 (RGB), or 4 (RGBA) channels."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "image"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Convert To Audio",
+      "description": "Converts a array object back to an audio file.\n    audio, conversion, array\n\n    Use cases:\n    - Save processed audio data as a playable file\n    - Convert generated or modified audio arrays to audio format\n    - Output results of audio processing pipelinesr",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.ConvertToAudio",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "The array to convert to an audio file."
+        },
+        {
+          "name": "sample_rate",
+          "type": {
+            "type": "int"
+          },
+          "default": 44100,
+          "title": "Sample Rate",
+          "description": "The sample rate of the audio file.",
+          "min": 0.0,
+          "max": 44100.0
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "audio"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "sample_rate"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Convert To Image",
+      "description": "Convert array data to PIL Image format.\n    array, image, conversion, denormalization\n\n    Use cases:\n    - Visualize array data as images\n    - Save processed array results as images\n    - Convert model outputs back to viewable format",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.ConvertToImage",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "The input array to convert to an image. Should have either 1, 3, or 4 channels."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "image"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Cosine Array",
+      "description": "Computes the cosine of input angles in radians.\n    math, trigonometry, cosine, cos\n\n    Use cases:\n    - Calculating horizontal components in physics\n    - Creating circular motions\n    - Phase calculations in signal processing",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.CosineArray",
+      "layout": "small",
+      "properties": [
+        {
+          "name": "angle_rad",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "float"
+              },
+              {
+                "type": "int"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 0.0,
+          "title": "Angle (Radians)"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "angle_rad"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Divide Array",
+      "description": "Divides the first array by the second.\n    math, division, arithmetic, quotient, /",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.DivideArray",
+      "layout": "small",
+      "properties": [
+        {
+          "name": "a",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 0.0,
+          "title": "A"
+        },
+        {
+          "name": "b",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 0.0,
+          "title": "B"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "a",
+        "b"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Exp Array",
+      "description": "Calculate the exponential of each element in a array.\n    array, exponential, math, activation\n\n    Use cases:\n    - Implement exponential activation functions\n    - Calculate growth rates in scientific models\n    - Transform data for certain statistical analyses",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.ExpArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "Input array"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "float"
+              },
+              {
+                "type": "int"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Index Array",
+      "description": "Select specific indices from an array along a specified axis.\n    array, index, select, subset\n\n    Use cases:\n    - Extract specific samples from a dataset\n    - Select particular features or dimensions\n    - Implement batch sampling operations",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.IndexArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "The input array to index"
+        },
+        {
+          "name": "indices",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Indices",
+          "description": "The comma separated indices to select"
+        },
+        {
+          "name": "axis",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Axis",
+          "description": "Axis along which to index"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "indices",
+        "axis"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "List To Array",
+      "description": "Convert a list of values to a array.\n    list, array, conversion, type\n\n    Use cases:\n    - Prepare list data for array operations\n    - Create arrays from Python data structures\n    - Convert sequence data to array format",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.ListToArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "any"
+              }
+            ]
+          },
+          "default": [],
+          "title": "Values",
+          "description": "List of values to convert to array"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Log Array",
+      "description": "Calculate the natural logarithm of each element in a array.\n    array, logarithm, math, transformation\n\n    Use cases:\n    - Implement log transformations on data\n    - Calculate entropy in information theory\n    - Normalize data with large ranges",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.LogArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "Input array"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "float"
+              },
+              {
+                "type": "int"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Mat Mul",
+      "description": "Perform matrix multiplication on two input arrays.\n    array, matrix, multiplication, linear algebra\n\n    Use cases:\n    - Implement linear transformations\n    - Calculate dot products of vectors\n    - Perform matrix operations in neural networks",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.MatMul",
+      "layout": "small",
+      "properties": [
+        {
+          "name": "a",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "A",
+          "description": "First input array"
+        },
+        {
+          "name": "b",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "B",
+          "description": "Second input array"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "a",
+        "b"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Max Array",
+      "description": "Compute the maximum value along a specified axis of a array.\n    array, maximum, reduction, statistics\n\n    Use cases:\n    - Find peak values in time series data\n    - Implement max pooling in neural networks\n    - Determine highest scores across multiple categories",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.MaxArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "Input array"
+        },
+        {
+          "name": "axis",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "none"
+              }
+            ]
+          },
+          "title": "Axis",
+          "description": "Axis along which to compute maximum"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "np_array"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "int"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "axis"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Mean Array",
+      "description": "Compute the mean value along a specified axis of a array.\n    array, average, reduction, statistics\n\n    Use cases:\n    - Calculate average values in datasets\n    - Implement mean pooling in neural networks\n    - Compute centroids in clustering algorithms",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.MeanArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "Input array"
+        },
+        {
+          "name": "axis",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "none"
+              }
+            ]
+          },
+          "title": "Axis",
+          "description": "Axis along which to compute mean"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "np_array"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "int"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "axis"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Min Array",
+      "description": "Calculate the minimum value along a specified axis of a array.\n    array, minimum, reduction, statistics\n\n    Use cases:\n    - Find lowest values in datasets\n    - Implement min pooling in neural networks\n    - Determine minimum thresholds across categories",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.MinArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "Input array"
+        },
+        {
+          "name": "axis",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "none"
+              }
+            ]
+          },
+          "title": "Axis",
+          "description": "Axis along which to compute minimum"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "np_array"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "int"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "axis"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Modulus Array",
+      "description": "Calculates the element-wise remainder of division.\n    math, modulo, remainder, mod, %\n\n    Use cases:\n    - Implementing cyclic behaviors\n    - Checking for even/odd numbers\n    - Limiting values to a specific range",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.ModulusArray",
+      "layout": "small",
+      "properties": [
+        {
+          "name": "a",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 0.0,
+          "title": "A"
+        },
+        {
+          "name": "b",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 0.0,
+          "title": "B"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "a",
+        "b"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Multiply Array",
+      "description": "Multiplies two arrays.\n    math, product, times, *",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.MultiplyArray",
+      "layout": "small",
+      "properties": [
+        {
+          "name": "a",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 0.0,
+          "title": "A"
+        },
+        {
+          "name": "b",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 0.0,
+          "title": "B"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "a",
+        "b"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Plot Array",
+      "description": "Create a plot visualization of array data.\n    array, plot, visualization, graph\n\n    Use cases:\n    - Visualize trends in array data\n    - Create charts for reports or dashboards\n    - Debug array outputs in workflows",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.PlotArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "Array to plot"
+        },
+        {
+          "name": "plot_type",
+          "type": {
+            "type": "enum",
+            "values": [
+              "line",
+              "bar",
+              "scatter"
+            ],
+            "type_name": "lib.data.numpy.__init__.PlotType"
+          },
+          "default": "line",
+          "title": "Plot Type",
+          "description": "Type of plot to create"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "image"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "plot_type"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Power Array",
+      "description": "Raises the base array to the power of the exponent element-wise.\n    math, exponentiation, power, pow, **\n\n    Use cases:\n    - Calculating compound interest\n    - Implementing polynomial functions\n    - Applying non-linear transformations to data",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.PowerArray",
+      "layout": "small",
+      "properties": [
+        {
+          "name": "base",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "float"
+              },
+              {
+                "type": "int"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 1.0,
+          "title": "Base"
+        },
+        {
+          "name": "exponent",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "float"
+              },
+              {
+                "type": "int"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 2.0,
+          "title": "Exponent"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "float"
+              },
+              {
+                "type": "int"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "base",
+        "exponent"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Reshape 1 D",
+      "description": "Reshape an array to a 1D shape without changing its data.",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.Reshape1D",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "The input array to reshape"
+        },
+        {
+          "name": "num_elements",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Num Elements",
+          "description": "The number of elements"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "num_elements"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Reshape 2 D",
+      "description": "Reshape an array to a new shape without changing its data.\n    array, reshape, dimensions, structure\n\n    Use cases:\n    - Convert between different dimensional representations\n    - Prepare data for specific model architectures\n    - Flatten or unflatten arrays",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.Reshape2D",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "The input array to reshape"
+        },
+        {
+          "name": "num_rows",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Num Rows",
+          "description": "The number of rows"
+        },
+        {
+          "name": "num_cols",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Num Cols",
+          "description": "The number of columns"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "num_rows",
+        "num_cols"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Reshape 3 D",
+      "description": "Reshape an array to a 3D shape without changing its data.",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.Reshape3D",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "The input array to reshape"
+        },
+        {
+          "name": "num_rows",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Num Rows",
+          "description": "The number of rows"
+        },
+        {
+          "name": "num_cols",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Num Cols",
+          "description": "The number of columns"
+        },
+        {
+          "name": "num_depths",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Num Depths",
+          "description": "The number of depths"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "num_rows",
+        "num_cols",
+        "num_depths"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Reshape 4 D",
+      "description": "Reshape an array to a 4D shape without changing its data.",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.Reshape4D",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "The input array to reshape"
+        },
+        {
+          "name": "num_rows",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Num Rows",
+          "description": "The number of rows"
+        },
+        {
+          "name": "num_cols",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Num Cols",
+          "description": "The number of columns"
+        },
+        {
+          "name": "num_depths",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Num Depths",
+          "description": "The number of depths"
+        },
+        {
+          "name": "num_channels",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Num Channels",
+          "description": "The number of channels"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "num_rows",
+        "num_cols",
+        "num_depths",
+        "num_channels"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Save Array",
+      "description": "Save a numpy array to a file in the specified folder.\n    array, save, file, storage",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.SaveArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "The array to save."
+        },
+        {
+          "name": "folder",
+          "type": {
+            "type": "folder"
+          },
+          "default": {},
+          "title": "Folder",
+          "description": "The folder to save the array in."
+        },
+        {
+          "name": "name",
+          "type": {
+            "type": "str"
+          },
+          "default": "%Y-%m-%d_%H-%M-%S.npy",
+          "title": "Name",
+          "description": "\n        The name of the asset to save.\n        You can use time and date variables to create unique names:\n        %Y - Year\n        %m - Month\n        %d - Day\n        %H - Hour\n        %M - Minute\n        %S - Second\n        "
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "folder",
+        "name"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Scalar To Array",
+      "description": "Convert a scalar value to a single-element array.\n    scalar, array, conversion, type\n\n    Use cases:\n    - Prepare scalar inputs for array operations\n    - Create constant arrays for computations\n    - Initialize array values in workflows",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.ScalarToArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "value",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "float"
+              },
+              {
+                "type": "int"
+              }
+            ]
+          },
+          "default": 0,
+          "title": "Value",
+          "description": "Scalar value to convert to array"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "value"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Sine Array",
+      "description": "Computes the sine of input angles in radians.\n    math, trigonometry, sine, sin\n\n    Use cases:\n    - Calculating vertical components in physics\n    - Generating smooth periodic functions\n    - Audio signal processing",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.SineArray",
+      "layout": "small",
+      "properties": [
+        {
+          "name": "angle_rad",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "float"
+              },
+              {
+                "type": "int"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 0.0,
+          "title": "Angle (Radians)"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "angle_rad"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Slice Array",
+      "description": "Extract a slice of an array along a specified axis.\n    array, slice, subset, index\n\n    Use cases:\n    - Extract specific time periods from time series data\n    - Select subset of features from datasets\n    - Create sliding windows over sequential data",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.SliceArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "The input array to slice"
+        },
+        {
+          "name": "start",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Start",
+          "description": "Starting index (inclusive)"
+        },
+        {
+          "name": "stop",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Stop",
+          "description": "Ending index (exclusive)"
+        },
+        {
+          "name": "step",
+          "type": {
+            "type": "int"
+          },
+          "default": 1,
+          "title": "Step",
+          "description": "Step size between elements"
+        },
+        {
+          "name": "axis",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Axis",
+          "description": "Axis along which to slice"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "start",
+        "stop",
+        "step",
+        "axis"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Split Array",
+      "description": "Split an array into multiple sub-arrays along a specified axis.\n    array, split, divide, partition\n\n    Use cases:\n    - Divide datasets into training/validation splits\n    - Create batches from large arrays\n    - Separate multi-channel data",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.SplitArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "The input array to split"
+        },
+        {
+          "name": "num_splits",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Num Splits",
+          "description": "Number of equal splits to create"
+        },
+        {
+          "name": "axis",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Axis",
+          "description": "Axis along which to split"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "num_splits",
+        "axis"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Sqrt Array",
+      "description": "Calculates the square root of the input array element-wise.\n    math, square root, sqrt, \u221a\n\n    Use cases:\n    - Normalizing data\n    - Calculating distances in Euclidean space\n    - Finding intermediate values in binary search",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.SqrtArray",
+      "layout": "small",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "Input array"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "float"
+              },
+              {
+                "type": "int"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Stack",
+      "description": "Stack multiple arrays along a specified axis.\n    array, stack, concatenate, join, merge, axis\n\n    Use cases:\n    - Combine multiple 2D arrays into a 3D array\n    - Stack time series data from multiple sources\n    - Merge feature vectors for machine learning models",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.Stack",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "arrays",
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": [],
+          "title": "Arrays",
+          "description": "Arrays to stack"
+        },
+        {
+          "name": "axis",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Axis",
+          "description": "The axis to stack along.",
+          "min": 0.0
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "arrays",
+        "axis"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Subtract Array",
+      "description": "Subtracts the second array from the first.\n    math, minus, difference, -",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.SubtractArray",
+      "layout": "small",
+      "properties": [
+        {
+          "name": "a",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 0.0,
+          "title": "A"
+        },
+        {
+          "name": "b",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "default": 0.0,
+          "title": "B"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "np_array"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "a",
+        "b"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Sum Array",
+      "description": "Calculate the sum of values along a specified axis of a array.\n    array, summation, reduction, statistics\n\n    Use cases:\n    - Compute total values across categories\n    - Implement sum pooling in neural networks\n    - Calculate cumulative metrics in time series data",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.SumArray",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "Input array"
+        },
+        {
+          "name": "axis",
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "int"
+              },
+              {
+                "type": "none"
+              }
+            ]
+          },
+          "title": "Axis",
+          "description": "Axis along which to compute sum"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "union",
+            "type_args": [
+              {
+                "type": "np_array"
+              },
+              {
+                "type": "float"
+              },
+              {
+                "type": "int"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values",
+        "axis"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Transpose Array",
+      "description": "Transpose the dimensions of the input array.\n    array, transpose, reshape, dimensions\n\n    Use cases:\n    - Convert row vectors to column vectors\n    - Rearrange data for compatibility with other operations\n    - Implement certain linear algebra operations",
+      "namespace": "lib.data.numpy.__init__",
+      "node_type": "lib.data.numpy.__init__.TransposeArray",
+      "layout": "small",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "np_array"
+          },
+          "default": {},
+          "title": "Values",
+          "description": "Array to transpose"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Add Column",
+      "description": "Add list of values as new column to dataframe.\n    dataframe, column, list\n\n    Use cases:\n    - Incorporate external data into existing dataframe\n    - Add calculated results as new column\n    - Augment dataframe with additional features",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.AddColumn",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "dataframe",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe",
+          "description": "Dataframe object to add a new column to."
+        },
+        {
+          "name": "column_name",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Column Name",
+          "description": "The name of the new column to be added to the dataframe."
+        },
+        {
+          "name": "values",
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "any"
+              }
+            ]
+          },
+          "default": [],
+          "title": "Values",
+          "description": "A list of any type of elements which will be the new column's values."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "dataframe",
+        "column_name",
+        "values"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Chart",
+      "description": "Create line, bar, or scatter plot from dataframe.\n    plot, visualization, dataframe\n\n    Use cases:\n    - Visualize trends in time series data\n    - Compare values across categories\n    - Explore relationships between variables",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.Chart",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "dataframe",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe",
+          "description": "The input dataframe."
+        },
+        {
+          "name": "x_column",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "X Column",
+          "description": "The name of the x column to be used in the plot."
+        },
+        {
+          "name": "y_column",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Y Column",
+          "description": "The name of the y column to be used in the plot."
+        },
+        {
+          "name": "plot_type",
+          "type": {
+            "type": "enum",
+            "values": [
+              "line",
+              "bar",
+              "scatter"
+            ],
+            "type_name": "lib.data.pandas.dataframe.PlotType"
+          },
+          "default": "line",
+          "title": "Plot Type",
+          "description": "The type of plot to be created. Can be 'line', 'bar', or 'scatter'."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "image"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "dataframe",
+        "x_column",
+        "y_column",
+        "plot_type"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Combine Vertically",
+      "description": "Append two dataframes along rows.\n    append, concat, rows\n\n    Use cases:\n    - Combine data from multiple time periods\n    - Merge datasets with same structure\n    - Aggregate data from different sources",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.CombineVertically",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "dataframe_a",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe A",
+          "description": "First DataFrame to be appended."
+        },
+        {
+          "name": "dataframe_b",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe B",
+          "description": "Second DataFrame to be appended."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "dataframe_a",
+        "dataframe_b"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Convert To Tensor",
+      "description": "Convert dataframe to tensor.\n    dataframe, tensor, convert\n\n    Use cases:\n    - Prepare data for deep learning models\n    - Enable tensor operations on dataframe data\n    - Convert tabular data to multidimensional format",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.ConvertToTensor",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "dataframe",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe",
+          "description": "The input dataframe."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "np_array"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "dataframe"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Extract Column",
+      "description": "Convert dataframe column to list.\n    dataframe, column, list\n\n    Use cases:\n    - Extract data for use in other processing steps\n    - Prepare column data for plotting or analysis\n    - Convert categorical data to list for encoding",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.ExtractColumn",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "dataframe",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe",
+          "description": "The input dataframe."
+        },
+        {
+          "name": "column_name",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Column Name",
+          "description": "The name of the column to be converted to a list."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "any"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "dataframe",
+        "column_name"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Filter",
+      "description": "Filter dataframe based on condition.\n    filter, query, condition\n\n    Example conditions:\n    age > 30\n    age > 30 and salary < 50000\n    name == 'John Doe'\n    100 <= price <= 200\n    status in ['Active', 'Pending']\n    not (age < 18)\n\n    Use cases:\n    - Extract subset of data meeting specific criteria\n    - Remove outliers or invalid data points\n    - Focus analysis on relevant data segments",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.Filter",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "df",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Df",
+          "description": "The DataFrame to filter."
+        },
+        {
+          "name": "condition",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Condition",
+          "description": "The filtering condition to be applied to the DataFrame, e.g. column_name > 5."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "df",
+        "condition"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Find One Row",
+      "description": "Find the first row in a dataframe that matches a given condition.\n    filter, query, condition, single row\n\n    Example conditions:\n    age > 30\n    age > 30 and salary < 50000\n    name == 'John Doe'\n    100 <= price <= 200\n    status in ['Active', 'Pending']\n    not (age < 18)\n\n    Use cases:\n    - Retrieve specific record based on criteria\n    - Find first occurrence of a particular condition\n    - Extract single data point for further analysis",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.FindOneRow",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "df",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Df",
+          "description": "The DataFrame to search."
+        },
+        {
+          "name": "condition",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Condition",
+          "description": "The condition to filter the DataFrame, e.g. 'column_name == value'."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "df",
+        "condition"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Format As Text",
+      "description": "Convert dataframe rows to formatted strings.\n    dataframe, string, format\n\n    Use cases:\n    - Generate text summaries from row data\n    - Prepare data for natural language processing\n    - Create custom string representations of rows",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.FormatAsText",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "dataframe",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe",
+          "description": "The input dataframe."
+        },
+        {
+          "name": "template",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Template",
+          "description": "The template for the string representation. Each column can be referenced by {column_name}."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "str"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "dataframe",
+        "template"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "From List",
+      "description": "Convert list of dicts to dataframe.\n    list, dataframe, convert\n\n    Use cases:\n    - Transform list data into structured dataframe\n    - Prepare list data for analysis or visualization\n    - Convert API responses to dataframe format",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.FromList",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "values",
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "any"
+              }
+            ]
+          },
+          "default": [],
+          "title": "Values",
+          "description": "List of values to be converted, each value will be a row."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "values"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Heatmap",
+      "description": "Create heatmap visualization of dataframe.\n    heatmap, plot, correlation\n\n    Use cases:\n    - Visualize correlation between variables\n    - Identify patterns in multi-dimensional data\n    - Display intensity of values across categories",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.Heatmap",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "dataframe",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe",
+          "description": "The input dataframe."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "image"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "dataframe"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Histogram",
+      "description": "Plot histogram of dataframe column.\n    histogram, plot, distribution\n\n    Use cases:\n    - Visualize distribution of continuous data\n    - Identify outliers and data patterns\n    - Compare data distributions across categories",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.Histogram",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "dataframe",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe",
+          "description": "The input dataframe."
+        },
+        {
+          "name": "column",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Column",
+          "description": "The column to plot."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "image"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "dataframe",
+        "column"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Import CSV",
+      "description": "Convert CSV string to dataframe.\n    csv, dataframe, import\n\n    Use cases:\n    - Import CSV data from string input\n    - Convert CSV responses from APIs to dataframe",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.ImportCSV",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "csv_data",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "CSV Data",
+          "description": "String input of CSV formatted text."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "csv_data"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Convert JSON to DataFrame",
+      "description": "Transforms a JSON string into a pandas DataFrame.\n    json, dataframe, conversion\n\n    Use cases:\n    - Converting API responses to tabular format\n    - Preparing JSON data for analysis or visualization\n    - Structuring unstructured JSON data for further processing",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.JSONToDataframe",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "text",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "JSON"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "text"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Join",
+      "description": "Join two dataframes on specified column.\n    join, merge, column\n\n    Use cases:\n    - Combine data from related tables\n    - Enrich dataset with additional information\n    - Link data based on common identifiers",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.Join",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "dataframe_a",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe A",
+          "description": "First DataFrame to be merged."
+        },
+        {
+          "name": "dataframe_b",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe B",
+          "description": "Second DataFrame to be merged."
+        },
+        {
+          "name": "join_on",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Join On",
+          "description": "The column name on which to join the two dataframes."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "dataframe_a",
+        "dataframe_b",
+        "join_on"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Map Template",
+      "description": "Maps a template string over dataframe rows using Jinja2 templating.\n    dataframe, template, format, string\n\n    Use cases:\n    - Format each row into a custom string representation\n    - Generate text summaries from structured data\n    - Create formatted output from dataframe records\n\n    Example:\n    Template: \"Name: {{ name }}, Age: {{ age|default('unknown') }}\"\n    Row: {\"name\": \"Alice\", \"age\": 30}\n    Output: \"Name: Alice, Age: 30\"\n\n    Available filters:\n    - truncate(length): Truncates text to given length\n    - upper: Converts text to uppercase\n    - lower: Converts text to lowercase\n    - title: Converts text to title case\n    - trim: Removes whitespace from start/end\n    - replace(old, new): Replaces substring\n    - default(value): Sets default if value is undefined\n    - first: Gets first character/item\n    - last: Gets last character/item\n    - length: Gets length of string/list\n    - sort: Sorts list\n    - join(delimiter): Joins list with delimiter",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.MapTemplate",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "dataframe",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe",
+          "description": "The input dataframe."
+        },
+        {
+          "name": "template",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Template",
+          "description": "Template string with Jinja2 placeholders matching column names \n        (e.g., {{ column_name }}). Supports filters like {{ value|upper }}, {{ value|truncate(20) }}."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "str"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "dataframe",
+        "template"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Merge Side By Side",
+      "description": "Merge two dataframes along columns.\n    merge, concat, columns\n\n    Use cases:\n    - Combine data from multiple sources\n    - Add new features to existing dataframe\n    - Merge time series data from different periods",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.MergeSideBySide",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "dataframe_a",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe A",
+          "description": "First DataFrame to be merged."
+        },
+        {
+          "name": "dataframe_b",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe B",
+          "description": "Second DataFrame to be merged."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "dataframe_a",
+        "dataframe_b"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Remove Duplicates",
+      "description": "Remove duplicate rows from dataframe.\n    duplicates, unique, clean\n\n    Use cases:\n    - Clean dataset by removing redundant entries\n    - Ensure data integrity in analysis\n    - Prepare data for unique value operations",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.RemoveDuplicates",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "df",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Df",
+          "description": "The input DataFrame."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "df"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Remove Incomplete Rows",
+      "description": "Remove rows with NA values from dataframe.\n    na, missing, clean\n\n    Use cases:\n    - Clean dataset by removing incomplete entries\n    - Prepare data for analysis requiring complete cases\n    - Improve data quality for modeling",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.RemoveIncompleteRows",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "df",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Df",
+          "description": "The input DataFrame."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "df"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Save Dataframe",
+      "description": "Save dataframe in specified folder.\n    csv, folder, save\n\n    Use cases:\n    - Export processed data for external use\n    - Create backups of dataframes",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.SaveDataframe",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "df",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Df"
+        },
+        {
+          "name": "folder",
+          "type": {
+            "type": "folder"
+          },
+          "default": {},
+          "title": "Folder",
+          "description": "Name of the output folder."
+        },
+        {
+          "name": "name",
+          "type": {
+            "type": "str"
+          },
+          "default": "output.csv",
+          "title": "Name",
+          "description": "\n        Name of the output file.\n        You can use time and date variables to create unique names:\n        %Y - Year\n        %m - Month\n        %d - Day\n        %H - Hour\n        %M - Minute\n        %S - Second\n        "
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "df",
+        "folder",
+        "name"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Select Column",
+      "description": "Select specific columns from dataframe.\n    dataframe, columns, filter\n\n    Use cases:\n    - Extract relevant features for analysis\n    - Reduce dataframe size by removing unnecessary columns\n    - Prepare data for specific visualizations or models",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.SelectColumn",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "dataframe",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe",
+          "description": "a dataframe from which columns are to be selected"
+        },
+        {
+          "name": "columns",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Columns",
+          "description": "comma separated list of column names"
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "dataframe",
+        "columns"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Slice",
+      "description": "Slice a dataframe by rows using start and end indices.\n    slice, subset, rows\n\n    Use cases:\n    - Extract a specific range of rows from a large dataset\n    - Create training and testing subsets for machine learning\n    - Analyze data in smaller chunks",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.Slice",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "dataframe",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe",
+          "description": "The input dataframe to be sliced."
+        },
+        {
+          "name": "start_index",
+          "type": {
+            "type": "int"
+          },
+          "default": 0,
+          "title": "Start Index",
+          "description": "The starting index of the slice (inclusive)."
+        },
+        {
+          "name": "end_index",
+          "type": {
+            "type": "int"
+          },
+          "default": -1,
+          "title": "End Index",
+          "description": "The ending index of the slice (exclusive). Use -1 for the last row."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "dataframe",
+        "start_index",
+        "end_index"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "Sort By Column",
+      "description": "Sort dataframe by specified column.\n    sort, order, column\n\n    Use cases:\n    - Arrange data in ascending or descending order\n    - Identify top or bottom values in dataset\n    - Prepare data for rank-based analysis",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.SortByColumn",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "df",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Df"
+        },
+        {
+          "name": "column",
+          "type": {
+            "type": "str"
+          },
+          "default": "",
+          "title": "Column",
+          "description": "The column to sort the DataFrame by."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "dataframe"
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "df",
+        "column"
+      ],
+      "is_dynamic": false
+    },
+    {
+      "title": "To List",
+      "description": "Convert dataframe to list of dictionaries.\n    dataframe, list, convert\n\n    Use cases:\n    - Convert dataframe data for API consumption\n    - Transform data for JSON serialization\n    - Prepare data for document-based storage",
+      "namespace": "lib.data.pandas.dataframe",
+      "node_type": "lib.data.pandas.dataframe.ToList",
+      "layout": "default",
+      "properties": [
+        {
+          "name": "dataframe",
+          "type": {
+            "type": "dataframe"
+          },
+          "default": {},
+          "title": "Dataframe",
+          "description": "The input dataframe to convert."
+        }
+      ],
+      "outputs": [
+        {
+          "type": {
+            "type": "list",
+            "type_args": [
+              {
+                "type": "dict"
+              }
+            ]
+          },
+          "name": "output"
+        }
+      ],
+      "the_model_info": {},
+      "recommended_models": [],
+      "basic_fields": [
+        "dataframe"
+      ],
+      "is_dynamic": false
+    }
+  ]
+}
