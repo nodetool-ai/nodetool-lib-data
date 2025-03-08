@@ -5,6 +5,7 @@
   "authors": [
     "Matthias Georgi <matti.georgi@gmail.com>"
   ],
+  "repo_id": "nodetool-ai/nodetool-lib-data",
   "nodes": [
     {
       "title": "HTMLSplitter",
@@ -1734,7 +1735,7 @@
               "bar",
               "scatter"
             ],
-            "type_name": "lib.data.numpy.__init__.PlotType"
+            "type_name": "nodetool.nodes.lib.data.numpy.__init__.PlotType"
           },
           "default": "line",
           "title": "Plot Type",
@@ -2685,7 +2686,7 @@
               "bar",
               "scatter"
             ],
-            "type_name": "lib.data.pandas.dataframe.PlotType"
+            "type_name": "nodetool.nodes.lib.data.pandas.dataframe.PlotType"
           },
           "default": "line",
           "title": "Plot Type",
