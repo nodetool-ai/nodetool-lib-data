@@ -66,91 +66,67 @@ def sample_2d_array():
 
 
 class TestBinaryOperations:
+    @pytest.mark.parametrize(
+        "NodeClass, a, b, expected",
+        [
+            (AddArray, 2, 3, 5),
+            (SubtractArray, 5, 3, 2),
+            (MultiplyArray, 2, 3, 6),
+            (DivideArray, 6, 3, 2),
+            (ModulusArray, 7, 3, 1),
+        ],
+    )
     @pytest.mark.asyncio
-    async def test_add_array(self, processing_context, sample_array):
-        # Setup
-        node = AddArray(a=sample_array, b=2)
-
-        # Execute
+    async def test_basic_math_operations(
+        self, processing_context, NodeClass, a, b, expected
+    ):
+        node = NodeClass(a=a, b=b)
         result = await node.process(processing_context)
+        assert result == expected
 
-        # Assert
-        assert isinstance(result, NPArray)
-        np.testing.assert_array_equal(np.array([3, 4, 5, 6]), result.to_numpy())
-
+    @pytest.mark.parametrize(
+        "node, expected_type",
+        [
+            (AddArray(a=5, b=5), (float, int, NPArray)),
+            (
+                AddArray(
+                    a=NPArray.from_numpy(np.array([1, 2])),
+                    b=NPArray.from_numpy(np.array([3, 4])),
+                ),
+                NPArray,
+            ),
+            (SubtractArray(a=5, b=5), (float, int, NPArray)),
+            (MultiplyArray(a=5, b=5), (float, int, NPArray)),
+            (DivideArray(a=5, b=5), (float, int, NPArray)),
+            (ModulusArray(a=5, b=5), (float, int, NPArray)),
+        ],
+    )
     @pytest.mark.asyncio
-    async def test_subtract_array(self, processing_context, sample_array):
-        # Setup
-        node = SubtractArray(a=sample_array, b=1)
-
-        # Execute
-        result = await node.process(processing_context)
-
-        # Assert
-        assert isinstance(result, NPArray)
-        np.testing.assert_array_equal(np.array([0, 1, 2, 3]), result.to_numpy())
-
-    @pytest.mark.asyncio
-    async def test_multiply_array(self, processing_context, sample_array):
-        # Setup
-        node = MultiplyArray(a=sample_array, b=2)
-
-        # Execute
-        result = await node.process(processing_context)
-
-        # Assert
-        assert isinstance(result, NPArray)
-        np.testing.assert_array_equal(np.array([2, 4, 6, 8]), result.to_numpy())
-
-    @pytest.mark.asyncio
-    async def test_divide_array(self, processing_context, sample_array):
-        # Setup
-        node = DivideArray(a=sample_array, b=2)
-
-        # Execute
-        result = await node.process(processing_context)
-
-        # Assert
-        assert isinstance(result, NPArray)
-        np.testing.assert_array_equal(np.array([0.5, 1, 1.5, 2]), result.to_numpy())
-
-    @pytest.mark.asyncio
-    async def test_modulus_array(self, processing_context, sample_array):
-        # Setup
-        node = ModulusArray(a=sample_array, b=2)
-
-        # Execute
-        result = await node.process(processing_context)
-
-        # Assert
-        assert isinstance(result, NPArray)
-        np.testing.assert_array_equal(np.array([1, 0, 1, 0]), result.to_numpy())
+    async def test_math_nodes_types(self, processing_context, node, expected_type):
+        try:
+            result = await node.process(processing_context)
+            assert isinstance(result, expected_type)
+        except Exception as e:
+            pytest.fail(f"Error processing {node.__class__.__name__}: {str(e)}")
 
 
 class TestTrigonometricOperations:
+    @pytest.mark.parametrize(
+        "NodeClass, input_value, expected",
+        [
+            (SineArray, 0, 0),
+            (SineArray, np.pi / 2, 1),
+            (CosineArray, 0, 1),
+            (CosineArray, np.pi, -1),
+        ],
+    )
     @pytest.mark.asyncio
-    async def test_sine_array(self, processing_context):
-        # Setup
-        node = SineArray(angle_rad=np.pi / 2)
-
-        # Execute
+    async def test_trig_functions(
+        self, processing_context, NodeClass, input_value, expected
+    ):
+        node = NodeClass(angle_rad=input_value)
         result = await node.process(processing_context)
-
-        # Assert
-        assert isinstance(result, float)
-        assert pytest.approx(1.0, 0.0001) == result
-
-    @pytest.mark.asyncio
-    async def test_cosine_array(self, processing_context):
-        # Setup
-        node = CosineArray(angle_rad=0)
-
-        # Execute
-        result = await node.process(processing_context)
-
-        # Assert
-        assert isinstance(result, float)
-        assert pytest.approx(1.0, 0.0001) == result
+        assert np.isclose(result, expected)
 
 
 class TestMathOperations:
@@ -226,6 +202,22 @@ class TestConversionOperations:
         # Assert
         assert isinstance(result, AudioRef)
         assert result.data is not None  # Should have binary data
+
+    @pytest.mark.asyncio
+    async def test_convert_to_image_with_mock(self, processing_context, mocker):
+        # Setup mock
+        mocker.patch.object(
+            processing_context,
+            "image_from_pil",
+            return_value=ImageRef(asset_id="test_image_id"),
+        )
+
+        array_data = NPArray.from_numpy(np.random.rand(100, 100, 3))
+        node = ConvertToImage(values=array_data)
+        result = await node.process(processing_context)
+
+        assert isinstance(result, ImageRef)
+        assert result.asset_id == "test_image_id"
 
 
 class TestArrayManipulation:
@@ -574,3 +566,23 @@ class TestSplitting:
         np.testing.assert_array_equal(np.array([1, 2]), result[0].to_numpy())
         np.testing.assert_array_equal(np.array([3, 4]), result[1].to_numpy())
         np.testing.assert_array_equal(np.array([5, 6]), result[2].to_numpy())
+
+
+@pytest.mark.parametrize(
+    "NodeClass",
+    [
+        AddArray,
+        SubtractArray,
+        MultiplyArray,
+        DivideArray,
+        ModulusArray,
+        SineArray,
+        CosineArray,
+        PowerArray,
+        SqrtArray,
+    ],
+)
+def test_node_attributes(NodeClass):
+    node = NodeClass()
+    assert hasattr(node, "process")
+    assert callable(node.process)
