@@ -16,10 +16,3 @@ repository = "https://github.com/nodetool-ai/nodetool-lib-data"
 [tool.poetry.dependencies]
 python = "^3.10"
 nodetool-core = { git = "https://github.com/nodetool-ai/nodetool-core.git", rev = "main" }
-
-llama-index = "0.12.13"
-llama-index-embeddings-ollama = "0.5.0"
-numpy = "1.26.4"
-pandas = "2.2.3"
-matplotlib = "3.9.2"
-seaborn = "0.13.2"
