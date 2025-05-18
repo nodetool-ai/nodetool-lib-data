@@ -3565,5 +3565,25 @@
       ],
       "is_dynamic": false
     }
+  ],
+  "examples": [
+    {
+      "id": "8c588b4cf3c711efb8fd000014c2afa2",
+      "name": "Fetch Papers",
+      "description": "This workflow automatically fetches and downloads research papers from the Awesome Transformers GitHub repository. It extracts paper links from the README.md file, filters for actual papers, and downloads them to a specified folder. Ideal for researchers and AI enthusiasts who want to stay updated with the latest transformer model papers.",
+      "tags": [
+        "automation"
+      ],
+      "thumbnail_url": ""
+    },
+    {
+      "id": "8c588b4cf3c711efb8fd000014c2afa2",
+      "name": "Fetch Papers",
+      "description": "This workflow automatically fetches and downloads research papers from the Awesome Transformers GitHub repository. It extracts paper links from the README.md file, filters for actual papers, and downloads them to a specified folder. Ideal for researchers and AI enthusiasts who want to stay updated with the latest transformer model papers.",
+      "tags": [
+        "automation"
+      ],
+      "thumbnail_url": ""
+    }
   ]
 }
