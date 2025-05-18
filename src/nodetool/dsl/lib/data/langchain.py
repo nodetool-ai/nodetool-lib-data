@@ -1,7 +1,8 @@
 from pydantic import BaseModel, Field
 import typing
+from typing import Any
 import nodetool.metadata.types
-from nodetool.metadata.types import *
+import nodetool.metadata.types as types
 from nodetool.dsl.graph import GraphNode
 
 
@@ -16,17 +17,33 @@ class MarkdownSplitter(GraphNode):
     - Creating context-aware chunks from markdown content
     """
 
-    text: str | GraphNode | tuple[GraphNode, str] = Field(default='', description=None)
-    document_id: str | GraphNode | tuple[GraphNode, str] = Field(default='', description='Document ID to associate with the text')
-    headers_to_split_on: list[tuple[str, str]] | GraphNode | tuple[GraphNode, str] = Field(default=[('#', 'Header 1'), ('##', 'Header 2'), ('###', 'Header 3')], description='List of tuples containing (header_symbol, header_name)')
-    strip_headers: bool | GraphNode | tuple[GraphNode, str] = Field(default=True, description='Whether to remove headers from the output content')
-    return_each_line: bool | GraphNode | tuple[GraphNode, str] = Field(default=False, description='Whether to split into individual lines instead of header sections')
-    chunk_size: int | None | GraphNode | tuple[GraphNode, str] = Field(default=None, description='Optional maximum chunk size for further splitting')
-    chunk_overlap: int | GraphNode | tuple[GraphNode, str] = Field(default=30, description='Overlap size when using chunk_size')
+    text: str | GraphNode | tuple[GraphNode, str] = Field(default="", description=None)
+    document_id: str | GraphNode | tuple[GraphNode, str] = Field(
+        default="", description="Document ID to associate with the text"
+    )
+    headers_to_split_on: list[tuple[str, str]] | GraphNode | tuple[GraphNode, str] = (
+        Field(
+            default=[("#", "Header 1"), ("##", "Header 2"), ("###", "Header 3")],
+            description="List of tuples containing (header_symbol, header_name)",
+        )
+    )
+    strip_headers: bool | GraphNode | tuple[GraphNode, str] = Field(
+        default=True, description="Whether to remove headers from the output content"
+    )
+    return_each_line: bool | GraphNode | tuple[GraphNode, str] = Field(
+        default=False,
+        description="Whether to split into individual lines instead of header sections",
+    )
+    chunk_size: int | None | GraphNode | tuple[GraphNode, str] = Field(
+        default=None, description="Optional maximum chunk size for further splitting"
+    )
+    chunk_overlap: int | GraphNode | tuple[GraphNode, str] = Field(
+        default=30, description="Overlap size when using chunk_size"
+    )
 
     @classmethod
-    def get_node_type(cls): return "lib.data.langchain.MarkdownSplitter"
-
+    def get_node_type(cls):
+        return "lib.data.langchain.MarkdownSplitter"
 
 
 class RecursiveTextSplitter(GraphNode):
@@ -40,15 +57,24 @@ class RecursiveTextSplitter(GraphNode):
     - Handling text in languages with/without word boundaries
     """
 
-    text: str | GraphNode | tuple[GraphNode, str] = Field(default='', description=None)
-    document_id: str | GraphNode | tuple[GraphNode, str] = Field(default='', description='Document ID to associate with the text')
-    chunk_size: int | GraphNode | tuple[GraphNode, str] = Field(default=1000, description='Maximum size of each chunk in characters')
-    chunk_overlap: int | GraphNode | tuple[GraphNode, str] = Field(default=200, description='Number of characters to overlap between chunks')
-    separators: list[str] | GraphNode | tuple[GraphNode, str] = Field(default=['\n\n', '\n', '.'], description='List of separators to use for splitting, in order of preference')
+    text: str | GraphNode | tuple[GraphNode, str] = Field(default="", description=None)
+    document_id: str | GraphNode | tuple[GraphNode, str] = Field(
+        default="", description="Document ID to associate with the text"
+    )
+    chunk_size: int | GraphNode | tuple[GraphNode, str] = Field(
+        default=1000, description="Maximum size of each chunk in characters"
+    )
+    chunk_overlap: int | GraphNode | tuple[GraphNode, str] = Field(
+        default=200, description="Number of characters to overlap between chunks"
+    )
+    separators: list[str] | GraphNode | tuple[GraphNode, str] = Field(
+        default=["\n\n", "\n", "."],
+        description="List of separators to use for splitting, in order of preference",
+    )
 
     @classmethod
-    def get_node_type(cls): return "lib.data.langchain.RecursiveTextSplitter"
-
+    def get_node_type(cls):
+        return "lib.data.langchain.RecursiveTextSplitter"
 
 
 class SentenceSplitter(GraphNode):
@@ -62,12 +88,17 @@ class SentenceSplitter(GraphNode):
     - Processing text for sentence-level analysis
     """
 
-    text: str | GraphNode | tuple[GraphNode, str] = Field(default='', description=None)
-    document_id: str | GraphNode | tuple[GraphNode, str] = Field(default='', description='Document ID to associate with the text')
-    chunk_size: int | GraphNode | tuple[GraphNode, str] = Field(default=40, description='Maximum number of tokens per chunk')
-    chunk_overlap: int | GraphNode | tuple[GraphNode, str] = Field(default=5, description='Number of tokens to overlap between chunks')
+    text: str | GraphNode | tuple[GraphNode, str] = Field(default="", description=None)
+    document_id: str | GraphNode | tuple[GraphNode, str] = Field(
+        default="", description="Document ID to associate with the text"
+    )
+    chunk_size: int | GraphNode | tuple[GraphNode, str] = Field(
+        default=40, description="Maximum number of tokens per chunk"
+    )
+    chunk_overlap: int | GraphNode | tuple[GraphNode, str] = Field(
+        default=5, description="Number of tokens to overlap between chunks"
+    )
 
     @classmethod
-    def get_node_type(cls): return "lib.data.langchain.SentenceSplitter"
-
-
+    def get_node_type(cls):
+        return "lib.data.langchain.SentenceSplitter"
