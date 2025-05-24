@@ -15,7 +15,7 @@
       {
         "id": "5",
         "parent_id": null,
-        "type": "lib.data.pandas.dataframe.FromList",
+        "type": "nodetool.data.FromList",
         "data": {},
         "ui_properties": {
           "selected": false,
@@ -33,7 +33,7 @@
       {
         "id": "6",
         "parent_id": null,
-        "type": "lib.data.pandas.dataframe.Filter",
+        "type": "nodetool.data.Filter",
         "data": {
           "condition": "title == 'Paper'"
         },
@@ -53,7 +53,7 @@
       {
         "id": "25",
         "parent_id": null,
-        "type": "lib.data.pandas.dataframe.ExtractColumn",
+        "type": "nodetool.data.ExtractColumn",
         "data": {
           "column_name": "url"
         },

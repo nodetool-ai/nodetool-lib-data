@@ -6,7 +6,7 @@ from nodetool.metadata.types import (
     DataframeRef,
     FolderRef,
 )
-from nodetool.nodes.lib.data.pandas.dataframe import (
+from nodetool.nodes.nodetool.data import (
     SelectColumn,
     ExtractColumn,
     FormatAsText,
