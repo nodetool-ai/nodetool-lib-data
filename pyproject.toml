@@ -16,3 +16,8 @@ repository = "https://github.com/nodetool-ai/nodetool-lib-data"
 [tool.poetry.dependencies]
 python = "^3.10"
 nodetool-core = { git = "https://github.com/nodetool-ai/nodetool-core.git", rev = "main" }
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4"
+pytest-asyncio = "^0.23"
+pytest-mock = "^3.12"
