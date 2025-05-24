@@ -94,7 +94,7 @@
       {
         "id": "32",
         "parent_id": null,
-        "type": "lib.file.markdown.ExtractLinks",
+        "type": "lib.markdown.ExtractLinks",
         "data": {
           "include_titles": true
         },
@@ -114,7 +114,7 @@
       {
         "id": "21698cb0-1d6a-47bc-a621-1d346a5008f5",
         "parent_id": null,
-        "type": "lib.network.http.DownloadFiles",
+        "type": "lib.http.DownloadFiles",
         "data": {
           "output_folder": {},
           "auth": null,
@@ -136,7 +136,7 @@
       {
         "id": "42210238-9ee4-4c29-96b8-8c385d439777",
         "parent_id": null,
-        "type": "lib.network.http.GetRequest",
+        "type": "lib.http.GetRequest",
         "data": {
           "url": "https://raw.githubusercontent.com/abacaj/awesome-transformers/refs/heads/main/README.md",
           "auth": null

@@ -27,7 +27,7 @@ class ArgMaxArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.statistics.ArgMaxArray"
+        return "lib.numpy.statistics.ArgMaxArray"
 
 
 class ArgMinArray(GraphNode):
@@ -51,7 +51,7 @@ class ArgMinArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.statistics.ArgMinArray"
+        return "lib.numpy.statistics.ArgMinArray"
 
 
 class MaxArray(GraphNode):
@@ -75,7 +75,7 @@ class MaxArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.statistics.MaxArray"
+        return "lib.numpy.statistics.MaxArray"
 
 
 class MeanArray(GraphNode):
@@ -99,7 +99,7 @@ class MeanArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.statistics.MeanArray"
+        return "lib.numpy.statistics.MeanArray"
 
 
 class MinArray(GraphNode):
@@ -123,7 +123,7 @@ class MinArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.statistics.MinArray"
+        return "lib.numpy.statistics.MinArray"
 
 
 class SumArray(GraphNode):
@@ -147,4 +147,4 @@ class SumArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.statistics.SumArray"
+        return "lib.numpy.statistics.SumArray"

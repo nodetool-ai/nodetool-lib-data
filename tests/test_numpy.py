@@ -6,7 +6,7 @@ from datetime import datetime
 from PIL import Image
 import io
 
-from nodetool.nodes.lib.data.numpy import (
+from nodetool.nodes.lib.numpy import (
     AddArray,
     SubtractArray,
     MultiplyArray,
@@ -481,7 +481,7 @@ class TestSlicingAndIndexing:
         array = NPArray.from_numpy(np.array([10, 20, 30, 40, 50]))
 
         # Need to patch the map function since it's used in the implementation
-        with patch("nodetool.nodes.lib.data.numpy.map", return_value=[1, 3]):
+        with patch("nodetool.nodes.lib.numpy.map", return_value=[1, 3]):
             node = IndexArray(values=array, indices="1,3", axis=0)
 
             # Execute

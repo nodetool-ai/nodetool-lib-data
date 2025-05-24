@@ -29,7 +29,7 @@ class AddArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.arithmetic.AddArray"
+        return "lib.numpy.arithmetic.AddArray"
 
 
 class BinaryOperation(GraphNode):
@@ -50,7 +50,7 @@ class BinaryOperation(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.utils.BinaryOperation"
+        return "lib.numpy.utils.BinaryOperation"
 
 
 class DivideArray(GraphNode):
@@ -76,7 +76,7 @@ class DivideArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.arithmetic.DivideArray"
+        return "lib.numpy.arithmetic.DivideArray"
 
 
 class ModulusArray(GraphNode):
@@ -107,7 +107,7 @@ class ModulusArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.arithmetic.ModulusArray"
+        return "lib.numpy.arithmetic.ModulusArray"
 
 
 class MultiplyArray(GraphNode):
@@ -133,7 +133,7 @@ class MultiplyArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.arithmetic.MultiplyArray"
+        return "lib.numpy.arithmetic.MultiplyArray"
 
 
 class SubtractArray(GraphNode):
@@ -159,4 +159,4 @@ class SubtractArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.arithmetic.SubtractArray"
+        return "lib.numpy.arithmetic.SubtractArray"

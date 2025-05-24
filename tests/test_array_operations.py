@@ -1,11 +1,11 @@
-from nodetool.dsl.lib.data.numpy.conversion import ListToArray
-from nodetool.dsl.lib.data.numpy.manipulation import MatMul
-from nodetool.dsl.lib.data.numpy.reshaping import Reshape2D
-from nodetool.dsl.lib.data.numpy.statistics import MeanArray, SumArray
-from nodetool.dsl.lib.data.numpy.arithmetic import SubtractArray
+from nodetool.dsl.lib.numpy.conversion import ListToArray
+from nodetool.dsl.lib.numpy.manipulation import MatMul
+from nodetool.dsl.lib.numpy.reshaping import Reshape2D
+from nodetool.dsl.lib.numpy.statistics import MeanArray, SumArray
+from nodetool.dsl.lib.numpy.arithmetic import SubtractArray
 import pytest
 from nodetool.dsl.graph import graph_result
-from nodetool.dsl.lib.data.numpy.math import (
+from nodetool.dsl.lib.numpy.math import (
     AbsArray,
     PowerArray,
 )

@@ -32,4 +32,4 @@ class SaveArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.io.SaveArray"
+        return "lib.numpy.io.SaveArray"

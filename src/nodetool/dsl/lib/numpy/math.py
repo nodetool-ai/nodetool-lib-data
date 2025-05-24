@@ -24,7 +24,7 @@ class AbsArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.math.AbsArray"
+        return "lib.numpy.math.AbsArray"
 
 
 class CosineArray(GraphNode):
@@ -48,7 +48,7 @@ class CosineArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.math.CosineArray"
+        return "lib.numpy.math.CosineArray"
 
 
 class ExpArray(GraphNode):
@@ -69,7 +69,7 @@ class ExpArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.math.ExpArray"
+        return "lib.numpy.math.ExpArray"
 
 
 class LogArray(GraphNode):
@@ -90,7 +90,7 @@ class LogArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.math.LogArray"
+        return "lib.numpy.math.LogArray"
 
 
 class PowerArray(GraphNode):
@@ -121,7 +121,7 @@ class PowerArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.math.PowerArray"
+        return "lib.numpy.math.PowerArray"
 
 
 class SineArray(GraphNode):
@@ -145,7 +145,7 @@ class SineArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.math.SineArray"
+        return "lib.numpy.math.SineArray"
 
 
 class SqrtArray(GraphNode):
@@ -166,4 +166,4 @@ class SqrtArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.math.SqrtArray"
+        return "lib.numpy.math.SqrtArray"

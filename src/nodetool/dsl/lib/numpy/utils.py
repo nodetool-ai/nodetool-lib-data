@@ -24,4 +24,4 @@ class BinaryOperation(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.utils.BinaryOperation"
+        return "lib.numpy.utils.BinaryOperation"

@@ -67,4 +67,4 @@ class ChartRenderer(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.seaborn.ChartRenderer"
+        return "lib.seaborn.ChartRenderer"

@@ -27,7 +27,7 @@ class Reshape1D(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.reshaping.Reshape1D"
+        return "lib.numpy.reshaping.Reshape1D"
 
 
 class Reshape2D(GraphNode):
@@ -54,7 +54,7 @@ class Reshape2D(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.reshaping.Reshape2D"
+        return "lib.numpy.reshaping.Reshape2D"
 
 
 class Reshape3D(GraphNode):
@@ -84,7 +84,7 @@ class Reshape3D(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.reshaping.Reshape3D"
+        return "lib.numpy.reshaping.Reshape3D"
 
 
 class Reshape4D(GraphNode):
@@ -117,4 +117,4 @@ class Reshape4D(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.reshaping.Reshape4D"
+        return "lib.numpy.reshaping.Reshape4D"

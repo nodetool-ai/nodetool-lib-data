@@ -8,205 +8,10 @@
   "repo_id": "nodetool-ai/nodetool-lib-data",
   "nodes": [
     {
-      "title": "HTMLSplitter",
-      "description": "Split HTML content into semantic chunks based on HTML tags.\n    html, text, semantic, tags, parsing",
-      "namespace": "lib.data.llama_index",
-      "node_type": "lib.data.llama_index.HTMLSplitter",
-      "layout": "default",
-      "properties": [
-        {
-          "name": "document_id",
-          "type": {
-            "type": "str"
-          },
-          "default": "",
-          "title": "Document Id",
-          "description": "Document ID to associate with the HTML content"
-        },
-        {
-          "name": "text",
-          "type": {
-            "type": "str"
-          },
-          "default": "",
-          "title": "Text",
-          "description": "HTML content to split"
-        }
-      ],
-      "outputs": [
-        {
-          "type": {
-            "type": "list",
-            "type_args": [
-              {
-                "type": "text_chunk"
-              }
-            ]
-          },
-          "name": "output"
-        }
-      ],
-      "the_model_info": {},
-      "recommended_models": [],
-      "basic_fields": [
-        "document_id",
-        "text"
-      ],
-      "is_dynamic": false
-    },
-    {
-      "title": "JSONSplitter",
-      "description": "Split JSON content into semantic chunks.\n    json, parsing, semantic, structured",
-      "namespace": "lib.data.llama_index",
-      "node_type": "lib.data.llama_index.JSONSplitter",
-      "layout": "default",
-      "properties": [
-        {
-          "name": "document_id",
-          "type": {
-            "type": "str"
-          },
-          "default": "",
-          "title": "Document Id",
-          "description": "Document ID to associate with the JSON content"
-        },
-        {
-          "name": "text",
-          "type": {
-            "type": "str"
-          },
-          "default": "",
-          "title": "Text",
-          "description": "JSON content to split"
-        },
-        {
-          "name": "include_metadata",
-          "type": {
-            "type": "bool"
-          },
-          "default": true,
-          "title": "Include Metadata",
-          "description": "Whether to include metadata in nodes"
-        },
-        {
-          "name": "include_prev_next_rel",
-          "type": {
-            "type": "bool"
-          },
-          "default": true,
-          "title": "Include Prev Next Rel",
-          "description": "Whether to include prev/next relationships"
-        }
-      ],
-      "outputs": [
-        {
-          "type": {
-            "type": "list",
-            "type_args": [
-              {
-                "type": "text_chunk"
-              }
-            ]
-          },
-          "name": "output"
-        }
-      ],
-      "the_model_info": {},
-      "recommended_models": [],
-      "basic_fields": [
-        "document_id",
-        "text",
-        "include_metadata",
-        "include_prev_next_rel"
-      ],
-      "is_dynamic": false
-    },
-    {
-      "title": "Semantic Splitter",
-      "description": "Split text semantically.\n    chroma, embedding, collection, RAG, index, text, markdown, semantic",
-      "namespace": "lib.data.llama_index",
-      "node_type": "lib.data.llama_index.SemanticSplitter",
-      "layout": "default",
-      "properties": [
-        {
-          "name": "embed_model",
-          "type": {
-            "type": "llama_model"
-          },
-          "default": {},
-          "title": "Embed Model",
-          "description": "Embedding model to use"
-        },
-        {
-          "name": "document_id",
-          "type": {
-            "type": "str"
-          },
-          "default": "",
-          "title": "Document Id",
-          "description": "Document ID to associate with the text content"
-        },
-        {
-          "name": "text",
-          "type": {
-            "type": "str"
-          },
-          "default": "",
-          "title": "Text",
-          "description": "Text content to split"
-        },
-        {
-          "name": "buffer_size",
-          "type": {
-            "type": "int"
-          },
-          "default": 1,
-          "title": "Buffer Size",
-          "description": "Buffer size for semantic splitting",
-          "min": 1.0,
-          "max": 100.0
-        },
-        {
-          "name": "threshold",
-          "type": {
-            "type": "int"
-          },
-          "default": 95,
-          "title": "Threshold",
-          "description": "Breakpoint percentile threshold for semantic splitting",
-          "min": 0.0,
-          "max": 100.0
-        }
-      ],
-      "outputs": [
-        {
-          "type": {
-            "type": "list",
-            "type_args": [
-              {
-                "type": "text_chunk"
-              }
-            ]
-          },
-          "name": "output"
-        }
-      ],
-      "the_model_info": {},
-      "recommended_models": [],
-      "basic_fields": [
-        "embed_model",
-        "document_id",
-        "text",
-        "buffer_size",
-        "threshold"
-      ],
-      "is_dynamic": false
-    },
-    {
       "title": "Chart Renderer",
       "description": "Node responsible for rendering chart configurations into image format using seaborn.\n    chart, seaborn, plot, visualization, data",
-      "namespace": "lib.data.seaborn",
-      "node_type": "lib.data.seaborn.ChartRenderer",
+      "namespace": "lib.seaborn",
+      "node_type": "lib.seaborn.ChartRenderer",
       "layout": "default",
       "properties": [
         {
@@ -288,290 +93,10 @@
       "is_dynamic": false
     },
     {
-      "title": "Split Markdown",
-      "description": "Splits markdown text by headers while preserving header hierarchy in metadata.\n    markdown, split, headers\n\n    Use cases:\n    - Splitting markdown documentation while preserving structure\n    - Processing markdown files for semantic search\n    - Creating context-aware chunks from markdown content",
-      "namespace": "lib.data.langchain",
-      "node_type": "lib.data.langchain.MarkdownSplitter",
-      "layout": "default",
-      "properties": [
-        {
-          "name": "text",
-          "type": {
-            "type": "str"
-          },
-          "default": "",
-          "title": "Markdown Text"
-        },
-        {
-          "name": "document_id",
-          "type": {
-            "type": "str"
-          },
-          "default": "",
-          "title": "Document Id",
-          "description": "Document ID to associate with the text"
-        },
-        {
-          "name": "headers_to_split_on",
-          "type": {
-            "type": "list",
-            "type_args": [
-              {
-                "type": "tuple",
-                "type_args": [
-                  {
-                    "type": "str"
-                  },
-                  {
-                    "type": "str"
-                  }
-                ]
-              }
-            ]
-          },
-          "default": [
-            [
-              "#",
-              "Header 1"
-            ],
-            [
-              "##",
-              "Header 2"
-            ],
-            [
-              "###",
-              "Header 3"
-            ]
-          ],
-          "title": "Headers To Split On",
-          "description": "List of tuples containing (header_symbol, header_name)"
-        },
-        {
-          "name": "strip_headers",
-          "type": {
-            "type": "bool"
-          },
-          "default": true,
-          "title": "Strip Headers",
-          "description": "Whether to remove headers from the output content"
-        },
-        {
-          "name": "return_each_line",
-          "type": {
-            "type": "bool"
-          },
-          "default": false,
-          "title": "Return Each Line",
-          "description": "Whether to split into individual lines instead of header sections"
-        },
-        {
-          "name": "chunk_size",
-          "type": {
-            "type": "union",
-            "type_args": [
-              {
-                "type": "int"
-              },
-              {
-                "type": "none"
-              }
-            ]
-          },
-          "title": "Chunk Size",
-          "description": "Optional maximum chunk size for further splitting"
-        },
-        {
-          "name": "chunk_overlap",
-          "type": {
-            "type": "int"
-          },
-          "default": 30,
-          "title": "Chunk Overlap",
-          "description": "Overlap size when using chunk_size"
-        }
-      ],
-      "outputs": [
-        {
-          "type": {
-            "type": "list",
-            "type_args": [
-              {
-                "type": "text_chunk"
-              }
-            ]
-          },
-          "name": "output"
-        }
-      ],
-      "the_model_info": {},
-      "recommended_models": [],
-      "basic_fields": [
-        "text",
-        "document_id",
-        "headers_to_split_on",
-        "strip_headers",
-        "return_each_line",
-        "chunk_size",
-        "chunk_overlap"
-      ],
-      "is_dynamic": false
-    },
-    {
-      "title": "Split Recursively",
-      "description": "Splits text recursively using LangChain's RecursiveCharacterTextSplitter.\n    text, split, chunks\n\n    Use cases:\n    - Splitting documents while preserving semantic relationships\n    - Creating chunks for language model processing\n    - Handling text in languages with/without word boundaries",
-      "namespace": "lib.data.langchain",
-      "node_type": "lib.data.langchain.RecursiveTextSplitter",
-      "layout": "default",
-      "properties": [
-        {
-          "name": "text",
-          "type": {
-            "type": "str"
-          },
-          "default": "",
-          "title": "Text"
-        },
-        {
-          "name": "document_id",
-          "type": {
-            "type": "str"
-          },
-          "default": "",
-          "title": "Document Id",
-          "description": "Document ID to associate with the text"
-        },
-        {
-          "name": "chunk_size",
-          "type": {
-            "type": "int"
-          },
-          "default": 1000,
-          "title": "Chunk Size",
-          "description": "Maximum size of each chunk in characters"
-        },
-        {
-          "name": "chunk_overlap",
-          "type": {
-            "type": "int"
-          },
-          "default": 200,
-          "title": "Chunk Overlap",
-          "description": "Number of characters to overlap between chunks"
-        },
-        {
-          "name": "separators",
-          "type": {
-            "type": "list",
-            "type_args": [
-              {
-                "type": "str"
-              }
-            ]
-          },
-          "default": [
-            "\n\n",
-            "\n",
-            "."
-          ],
-          "title": "Separators",
-          "description": "List of separators to use for splitting, in order of preference"
-        }
-      ],
-      "outputs": [
-        {
-          "type": {
-            "type": "list",
-            "type_args": [
-              {
-                "type": "text_chunk"
-              }
-            ]
-          },
-          "name": "output"
-        }
-      ],
-      "the_model_info": {},
-      "recommended_models": [],
-      "basic_fields": [
-        "text",
-        "document_id",
-        "chunk_size",
-        "chunk_overlap",
-        "separators"
-      ],
-      "is_dynamic": false
-    },
-    {
-      "title": "Split into Sentences",
-      "description": "Splits text into sentences using LangChain's SentenceTransformersTokenTextSplitter.\n    sentences, split, nlp\n\n    Use cases:\n    - Natural sentence-based text splitting\n    - Creating semantically meaningful chunks\n    - Processing text for sentence-level analysis",
-      "namespace": "lib.data.langchain",
-      "node_type": "lib.data.langchain.SentenceSplitter",
-      "layout": "default",
-      "properties": [
-        {
-          "name": "text",
-          "type": {
-            "type": "str"
-          },
-          "default": "",
-          "title": "Text"
-        },
-        {
-          "name": "document_id",
-          "type": {
-            "type": "str"
-          },
-          "default": "",
-          "title": "Document Id",
-          "description": "Document ID to associate with the text"
-        },
-        {
-          "name": "chunk_size",
-          "type": {
-            "type": "int"
-          },
-          "default": 40,
-          "title": "Chunk Size",
-          "description": "Maximum number of tokens per chunk"
-        },
-        {
-          "name": "chunk_overlap",
-          "type": {
-            "type": "int"
-          },
-          "default": 5,
-          "title": "Chunk Overlap",
-          "description": "Number of tokens to overlap between chunks"
-        }
-      ],
-      "outputs": [
-        {
-          "type": {
-            "type": "list",
-            "type_args": [
-              {
-                "type": "text_chunk"
-              }
-            ]
-          },
-          "name": "output"
-        }
-      ],
-      "the_model_info": {},
-      "recommended_models": [],
-      "basic_fields": [
-        "text",
-        "document_id",
-        "chunk_size",
-        "chunk_overlap"
-      ],
-      "is_dynamic": false
-    },
-    {
       "title": "Index Array",
       "description": "Select specific indices from an array along a specified axis.\n    array, index, select, subset\n\n    Use cases:\n    - Extract specific samples from a dataset\n    - Select particular features or dimensions\n    - Implement batch sampling operations",
-      "namespace": "lib.data.numpy.manipulation",
-      "node_type": "lib.data.numpy.manipulation.IndexArray",
+      "namespace": "lib.numpy.manipulation",
+      "node_type": "lib.numpy.manipulation.IndexArray",
       "layout": "default",
       "properties": [
         {
@@ -622,8 +147,8 @@
     {
       "title": "Mat Mul",
       "description": "Perform matrix multiplication on two input arrays.\n    array, matrix, multiplication, linear algebra\n\n    Use cases:\n    - Implement linear transformations\n    - Calculate dot products of vectors\n    - Perform matrix operations in neural networks",
-      "namespace": "lib.data.numpy.manipulation",
-      "node_type": "lib.data.numpy.manipulation.MatMul",
+      "namespace": "lib.numpy.manipulation",
+      "node_type": "lib.numpy.manipulation.MatMul",
       "layout": "small",
       "properties": [
         {
@@ -664,8 +189,8 @@
     {
       "title": "Slice Array",
       "description": "Extract a slice of an array along a specified axis.\n    array, slice, subset, index\n\n    Use cases:\n    - Extract specific time periods from time series data\n    - Select subset of features from datasets\n    - Create sliding windows over sequential data",
-      "namespace": "lib.data.numpy.manipulation",
-      "node_type": "lib.data.numpy.manipulation.SliceArray",
+      "namespace": "lib.numpy.manipulation",
+      "node_type": "lib.numpy.manipulation.SliceArray",
       "layout": "default",
       "properties": [
         {
@@ -736,8 +261,8 @@
     {
       "title": "Split Array",
       "description": "Split an array into multiple sub-arrays along a specified axis.\n    array, split, divide, partition\n\n    Use cases:\n    - Divide datasets into training/validation splits\n    - Create batches from large arrays\n    - Separate multi-channel data",
-      "namespace": "lib.data.numpy.manipulation",
-      "node_type": "lib.data.numpy.manipulation.SplitArray",
+      "namespace": "lib.numpy.manipulation",
+      "node_type": "lib.numpy.manipulation.SplitArray",
       "layout": "default",
       "properties": [
         {
@@ -793,8 +318,8 @@
     {
       "title": "Stack",
       "description": "Stack multiple arrays along a specified axis.\n    array, stack, concatenate, join, merge, axis\n\n    Use cases:\n    - Combine multiple 2D arrays into a 3D array\n    - Stack time series data from multiple sources\n    - Merge feature vectors for machine learning models",
-      "namespace": "lib.data.numpy.manipulation",
-      "node_type": "lib.data.numpy.manipulation.Stack",
+      "namespace": "lib.numpy.manipulation",
+      "node_type": "lib.numpy.manipulation.Stack",
       "layout": "default",
       "properties": [
         {
@@ -841,8 +366,8 @@
     {
       "title": "Transpose Array",
       "description": "Transpose the dimensions of the input array.\n    array, transpose, reshape, dimensions\n\n    Use cases:\n    - Convert row vectors to column vectors\n    - Rearrange data for compatibility with other operations\n    - Implement certain linear algebra operations",
-      "namespace": "lib.data.numpy.manipulation",
-      "node_type": "lib.data.numpy.manipulation.TransposeArray",
+      "namespace": "lib.numpy.manipulation",
+      "node_type": "lib.numpy.manipulation.TransposeArray",
       "layout": "small",
       "properties": [
         {
@@ -873,8 +398,8 @@
     {
       "title": "Add Array",
       "description": "Performs addition on two arrays.\n    math, plus, add, addition, sum, +",
-      "namespace": "lib.data.numpy.arithmetic",
-      "node_type": "lib.data.numpy.arithmetic.AddArray",
+      "namespace": "lib.numpy.arithmetic",
+      "node_type": "lib.numpy.arithmetic.AddArray",
       "layout": "small",
       "properties": [
         {
@@ -946,8 +471,8 @@
     {
       "title": "Divide Array",
       "description": "Divides the first array by the second.\n    math, division, arithmetic, quotient, /",
-      "namespace": "lib.data.numpy.arithmetic",
-      "node_type": "lib.data.numpy.arithmetic.DivideArray",
+      "namespace": "lib.numpy.arithmetic",
+      "node_type": "lib.numpy.arithmetic.DivideArray",
       "layout": "small",
       "properties": [
         {
@@ -1019,8 +544,8 @@
     {
       "title": "Modulus Array",
       "description": "Calculates the element-wise remainder of division.\n    math, modulo, remainder, mod, %\n\n    Use cases:\n    - Implementing cyclic behaviors\n    - Checking for even/odd numbers\n    - Limiting values to a specific range",
-      "namespace": "lib.data.numpy.arithmetic",
-      "node_type": "lib.data.numpy.arithmetic.ModulusArray",
+      "namespace": "lib.numpy.arithmetic",
+      "node_type": "lib.numpy.arithmetic.ModulusArray",
       "layout": "small",
       "properties": [
         {
@@ -1092,8 +617,8 @@
     {
       "title": "Multiply Array",
       "description": "Multiplies two arrays.\n    math, product, times, *",
-      "namespace": "lib.data.numpy.arithmetic",
-      "node_type": "lib.data.numpy.arithmetic.MultiplyArray",
+      "namespace": "lib.numpy.arithmetic",
+      "node_type": "lib.numpy.arithmetic.MultiplyArray",
       "layout": "small",
       "properties": [
         {
@@ -1165,8 +690,8 @@
     {
       "title": "Subtract Array",
       "description": "Subtracts the second array from the first.\n    math, minus, difference, -",
-      "namespace": "lib.data.numpy.arithmetic",
-      "node_type": "lib.data.numpy.arithmetic.SubtractArray",
+      "namespace": "lib.numpy.arithmetic",
+      "node_type": "lib.numpy.arithmetic.SubtractArray",
       "layout": "small",
       "properties": [
         {
@@ -1238,8 +763,8 @@
     {
       "title": "Reshape 1 D",
       "description": "Reshape an array to a 1D shape without changing its data.\n    array, reshape, vector, flatten\n\n    Use cases:\n    - Flatten multi-dimensional data for certain algorithms\n    - Convert images to vector form for machine learning\n    - Prepare data for 1D operations",
-      "namespace": "lib.data.numpy.reshaping",
-      "node_type": "lib.data.numpy.reshaping.Reshape1D",
+      "namespace": "lib.numpy.reshaping",
+      "node_type": "lib.numpy.reshaping.Reshape1D",
       "layout": "default",
       "properties": [
         {
@@ -1280,8 +805,8 @@
     {
       "title": "Reshape 2 D",
       "description": "Reshape an array to a new shape without changing its data.\n    array, reshape, dimensions, structure\n\n    Use cases:\n    - Convert between different dimensional representations\n    - Prepare data for specific model architectures\n    - Flatten or unflatten arrays",
-      "namespace": "lib.data.numpy.reshaping",
-      "node_type": "lib.data.numpy.reshaping.Reshape2D",
+      "namespace": "lib.numpy.reshaping",
+      "node_type": "lib.numpy.reshaping.Reshape2D",
       "layout": "default",
       "properties": [
         {
@@ -1332,8 +857,8 @@
     {
       "title": "Reshape 3 D",
       "description": "Reshape an array to a 3D shape without changing its data.\n    array, reshape, dimensions, volume\n\n    Use cases:\n    - Convert data for 3D visualization\n    - Prepare image data with channels\n    - Structure data for 3D convolutions",
-      "namespace": "lib.data.numpy.reshaping",
-      "node_type": "lib.data.numpy.reshaping.Reshape3D",
+      "namespace": "lib.numpy.reshaping",
+      "node_type": "lib.numpy.reshaping.Reshape3D",
       "layout": "default",
       "properties": [
         {
@@ -1394,8 +919,8 @@
     {
       "title": "Reshape 4 D",
       "description": "Reshape an array to a 4D shape without changing its data.\n    array, reshape, dimensions, batch\n\n    Use cases:\n    - Prepare batch data for neural networks\n    - Structure spatiotemporal data\n    - Format data for 3D image processing with channels",
-      "namespace": "lib.data.numpy.reshaping",
-      "node_type": "lib.data.numpy.reshaping.Reshape4D",
+      "namespace": "lib.numpy.reshaping",
+      "node_type": "lib.numpy.reshaping.Reshape4D",
       "layout": "default",
       "properties": [
         {
@@ -1466,8 +991,8 @@
     {
       "title": "Save Array",
       "description": "Save a numpy array to a file in the specified folder.\n    array, save, file, storage\n\n    Use cases:\n    - Store processed arrays for later use\n    - Save analysis results\n    - Create checkpoints in processing pipelines",
-      "namespace": "lib.data.numpy.io",
-      "node_type": "lib.data.numpy.io.SaveArray",
+      "namespace": "lib.numpy.io",
+      "node_type": "lib.numpy.io.SaveArray",
       "layout": "default",
       "properties": [
         {
@@ -1518,8 +1043,8 @@
     {
       "title": "Array To List",
       "description": "Convert a array to a nested list structure.\n    array, list, conversion, type\n\n    Use cases:\n    - Prepare array data for JSON serialization\n    - Convert array outputs to Python data structures\n    - Interface array data with non-array operations",
-      "namespace": "lib.data.numpy.conversion",
-      "node_type": "lib.data.numpy.conversion.ArrayToList",
+      "namespace": "lib.numpy.conversion",
+      "node_type": "lib.numpy.conversion.ArrayToList",
       "layout": "default",
       "properties": [
         {
@@ -1555,8 +1080,8 @@
     {
       "title": "Array To Scalar",
       "description": "Convert a single-element array to a scalar value.\n    array, scalar, conversion, type\n\n    Use cases:\n    - Extract final results from array computations\n    - Prepare values for non-array operations\n    - Simplify output for human-readable results",
-      "namespace": "lib.data.numpy.conversion",
-      "node_type": "lib.data.numpy.conversion.ArrayToScalar",
+      "namespace": "lib.numpy.conversion",
+      "node_type": "lib.numpy.conversion.ArrayToScalar",
       "layout": "default",
       "properties": [
         {
@@ -1595,8 +1120,8 @@
     {
       "title": "Convert To Array",
       "description": "Convert PIL Image to normalized tensor representation.\n    image, tensor, conversion, normalization\n\n    Use cases:\n    - Prepare images for machine learning models\n    - Convert between image formats for processing\n    - Normalize image data for consistent calculations",
-      "namespace": "lib.data.numpy.conversion",
-      "node_type": "lib.data.numpy.conversion.ConvertToArray",
+      "namespace": "lib.numpy.conversion",
+      "node_type": "lib.numpy.conversion.ConvertToArray",
       "layout": "default",
       "properties": [
         {
@@ -1627,8 +1152,8 @@
     {
       "title": "Convert To Audio",
       "description": "Converts a array object back to an audio file.\n    audio, conversion, array\n\n    Use cases:\n    - Save processed audio data as a playable file\n    - Convert generated or modified audio arrays to audio format\n    - Output results of audio processing pipelinesr",
-      "namespace": "lib.data.numpy.conversion",
-      "node_type": "lib.data.numpy.conversion.ConvertToAudio",
+      "namespace": "lib.numpy.conversion",
+      "node_type": "lib.numpy.conversion.ConvertToAudio",
       "layout": "default",
       "properties": [
         {
@@ -1671,8 +1196,8 @@
     {
       "title": "Convert To Image",
       "description": "Convert array data to PIL Image format.\n    array, image, conversion, denormalization\n\n    Use cases:\n    - Visualize array data as images\n    - Save processed array results as images\n    - Convert model outputs back to viewable format",
-      "namespace": "lib.data.numpy.conversion",
-      "node_type": "lib.data.numpy.conversion.ConvertToImage",
+      "namespace": "lib.numpy.conversion",
+      "node_type": "lib.numpy.conversion.ConvertToImage",
       "layout": "default",
       "properties": [
         {
@@ -1703,8 +1228,8 @@
     {
       "title": "List To Array",
       "description": "Convert a list of values to a array.\n    list, array, conversion, type\n\n    Use cases:\n    - Prepare list data for array operations\n    - Create arrays from Python data structures\n    - Convert sequence data to array format",
-      "namespace": "lib.data.numpy.conversion",
-      "node_type": "lib.data.numpy.conversion.ListToArray",
+      "namespace": "lib.numpy.conversion",
+      "node_type": "lib.numpy.conversion.ListToArray",
       "layout": "default",
       "properties": [
         {
@@ -1740,8 +1265,8 @@
     {
       "title": "Scalar To Array",
       "description": "Convert a scalar value to a single-element array.\n    scalar, array, conversion, type\n\n    Use cases:\n    - Prepare scalar inputs for array operations\n    - Create constant arrays for computations\n    - Initialize array values in workflows",
-      "namespace": "lib.data.numpy.conversion",
-      "node_type": "lib.data.numpy.conversion.ScalarToArray",
+      "namespace": "lib.numpy.conversion",
+      "node_type": "lib.numpy.conversion.ScalarToArray",
       "layout": "default",
       "properties": [
         {
@@ -1780,8 +1305,8 @@
     {
       "title": "Plot Array",
       "description": "Create a plot visualization of array data.\n    array, plot, visualization, graph\n\n    Use cases:\n    - Visualize trends in array data\n    - Create charts for reports or dashboards\n    - Debug array outputs in workflows",
-      "namespace": "lib.data.numpy.visualization",
-      "node_type": "lib.data.numpy.visualization.PlotArray",
+      "namespace": "lib.numpy.visualization",
+      "node_type": "lib.numpy.visualization.PlotArray",
       "layout": "default",
       "properties": [
         {
@@ -1802,7 +1327,7 @@
               "bar",
               "scatter"
             ],
-            "type_name": "nodetool.nodes.lib.data.numpy.visualization.PlotType"
+            "type_name": "nodetool.nodes.lib.numpy.visualization.PlotType"
           },
           "default": "line",
           "title": "Plot Type",
@@ -1828,8 +1353,8 @@
     {
       "title": "Binary Operation",
       "description": "",
-      "namespace": "lib.data.numpy.utils",
-      "node_type": "lib.data.numpy.utils.BinaryOperation",
+      "namespace": "lib.numpy.utils",
+      "node_type": "lib.numpy.utils.BinaryOperation",
       "layout": "small",
       "properties": [
         {
@@ -1901,8 +1426,8 @@
     {
       "title": "Arg Max Array",
       "description": "Find indices of maximum values along a specified axis of a array.\n    array, argmax, index, maximum\n\n    Use cases:\n    - Determine winning classes in classification tasks\n    - Find peaks in signal processing\n    - Locate best-performing items in datasets",
-      "namespace": "lib.data.numpy.statistics",
-      "node_type": "lib.data.numpy.statistics.ArgMaxArray",
+      "namespace": "lib.numpy.statistics",
+      "node_type": "lib.numpy.statistics.ArgMaxArray",
       "layout": "default",
       "properties": [
         {
@@ -1958,8 +1483,8 @@
     {
       "title": "Arg Min Array",
       "description": "Find indices of minimum values along a specified axis of a array.\n    array, argmin, index, minimum\n\n    Use cases:\n    - Locate lowest-performing items in datasets\n    - Find troughs in signal processing\n    - Determine least likely classes in classification tasks",
-      "namespace": "lib.data.numpy.statistics",
-      "node_type": "lib.data.numpy.statistics.ArgMinArray",
+      "namespace": "lib.numpy.statistics",
+      "node_type": "lib.numpy.statistics.ArgMinArray",
       "layout": "default",
       "properties": [
         {
@@ -2015,8 +1540,8 @@
     {
       "title": "Max Array",
       "description": "Compute the maximum value along a specified axis of a array.\n    array, maximum, reduction, statistics\n\n    Use cases:\n    - Find peak values in time series data\n    - Implement max pooling in neural networks\n    - Determine highest scores across multiple categories",
-      "namespace": "lib.data.numpy.statistics",
-      "node_type": "lib.data.numpy.statistics.MaxArray",
+      "namespace": "lib.numpy.statistics",
+      "node_type": "lib.numpy.statistics.MaxArray",
       "layout": "default",
       "properties": [
         {
@@ -2075,8 +1600,8 @@
     {
       "title": "Mean Array",
       "description": "Compute the mean value along a specified axis of a array.\n    array, average, reduction, statistics\n\n    Use cases:\n    - Calculate average values in datasets\n    - Implement mean pooling in neural networks\n    - Compute centroids in clustering algorithms",
-      "namespace": "lib.data.numpy.statistics",
-      "node_type": "lib.data.numpy.statistics.MeanArray",
+      "namespace": "lib.numpy.statistics",
+      "node_type": "lib.numpy.statistics.MeanArray",
       "layout": "default",
       "properties": [
         {
@@ -2135,8 +1660,8 @@
     {
       "title": "Min Array",
       "description": "Calculate the minimum value along a specified axis of a array.\n    array, minimum, reduction, statistics\n\n    Use cases:\n    - Find lowest values in datasets\n    - Implement min pooling in neural networks\n    - Determine minimum thresholds across categories",
-      "namespace": "lib.data.numpy.statistics",
-      "node_type": "lib.data.numpy.statistics.MinArray",
+      "namespace": "lib.numpy.statistics",
+      "node_type": "lib.numpy.statistics.MinArray",
       "layout": "default",
       "properties": [
         {
@@ -2195,8 +1720,8 @@
     {
       "title": "Sum Array",
       "description": "Calculate the sum of values along a specified axis of a array.\n    array, summation, reduction, statistics\n\n    Use cases:\n    - Compute total values across categories\n    - Implement sum pooling in neural networks\n    - Calculate cumulative metrics in time series data",
-      "namespace": "lib.data.numpy.statistics",
-      "node_type": "lib.data.numpy.statistics.SumArray",
+      "namespace": "lib.numpy.statistics",
+      "node_type": "lib.numpy.statistics.SumArray",
       "layout": "default",
       "properties": [
         {
@@ -2255,8 +1780,8 @@
     {
       "title": "Abs Array",
       "description": "Compute the absolute value of each element in a array.\n    array, absolute, magnitude\n\n    Use cases:\n    - Calculate magnitudes of complex numbers\n    - Preprocess data for certain algorithms\n    - Implement activation functions in neural networks",
-      "namespace": "lib.data.numpy.math",
-      "node_type": "lib.data.numpy.math.AbsArray",
+      "namespace": "lib.numpy.math",
+      "node_type": "lib.numpy.math.AbsArray",
       "layout": "default",
       "properties": [
         {
@@ -2287,8 +1812,8 @@
     {
       "title": "Cosine Array",
       "description": "Computes the cosine of input angles in radians.\n    math, trigonometry, cosine, cos\n\n    Use cases:\n    - Calculating horizontal components in physics\n    - Creating circular motions\n    - Phase calculations in signal processing",
-      "namespace": "lib.data.numpy.math",
-      "node_type": "lib.data.numpy.math.CosineArray",
+      "namespace": "lib.numpy.math",
+      "node_type": "lib.numpy.math.CosineArray",
       "layout": "small",
       "properties": [
         {
@@ -2337,8 +1862,8 @@
     {
       "title": "Exp Array",
       "description": "Calculate the exponential of each element in a array.\n    array, exponential, math, activation\n\n    Use cases:\n    - Implement exponential activation functions\n    - Calculate growth rates in scientific models\n    - Transform data for certain statistical analyses",
-      "namespace": "lib.data.numpy.math",
-      "node_type": "lib.data.numpy.math.ExpArray",
+      "namespace": "lib.numpy.math",
+      "node_type": "lib.numpy.math.ExpArray",
       "layout": "default",
       "properties": [
         {
@@ -2380,8 +1905,8 @@
     {
       "title": "Log Array",
       "description": "Calculate the natural logarithm of each element in a array.\n    array, logarithm, math, transformation\n\n    Use cases:\n    - Implement log transformations on data\n    - Calculate entropy in information theory\n    - Normalize data with large ranges",
-      "namespace": "lib.data.numpy.math",
-      "node_type": "lib.data.numpy.math.LogArray",
+      "namespace": "lib.numpy.math",
+      "node_type": "lib.numpy.math.LogArray",
       "layout": "default",
       "properties": [
         {
@@ -2423,8 +1948,8 @@
     {
       "title": "Power Array",
       "description": "Raises the base array to the power of the exponent element-wise.\n    math, exponentiation, power, pow, **\n\n    Use cases:\n    - Calculating compound interest\n    - Implementing polynomial functions\n    - Applying non-linear transformations to data",
-      "namespace": "lib.data.numpy.math",
-      "node_type": "lib.data.numpy.math.PowerArray",
+      "namespace": "lib.numpy.math",
+      "node_type": "lib.numpy.math.PowerArray",
       "layout": "small",
       "properties": [
         {
@@ -2496,8 +2021,8 @@
     {
       "title": "Sine Array",
       "description": "Computes the sine of input angles in radians.\n    math, trigonometry, sine, sin\n\n    Use cases:\n    - Calculating vertical components in physics\n    - Generating smooth periodic functions\n    - Audio signal processing",
-      "namespace": "lib.data.numpy.math",
-      "node_type": "lib.data.numpy.math.SineArray",
+      "namespace": "lib.numpy.math",
+      "node_type": "lib.numpy.math.SineArray",
       "layout": "small",
       "properties": [
         {
@@ -2546,8 +2071,8 @@
     {
       "title": "Sqrt Array",
       "description": "Calculates the square root of the input array element-wise.\n    math, square root, sqrt, \u221a\n\n    Use cases:\n    - Normalizing data\n    - Calculating distances in Euclidean space\n    - Finding intermediate values in binary search",
-      "namespace": "lib.data.numpy.math",
-      "node_type": "lib.data.numpy.math.SqrtArray",
+      "namespace": "lib.numpy.math",
+      "node_type": "lib.numpy.math.SqrtArray",
       "layout": "small",
       "properties": [
         {

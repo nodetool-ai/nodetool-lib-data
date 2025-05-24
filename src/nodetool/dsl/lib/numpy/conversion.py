@@ -24,7 +24,7 @@ class ArrayToList(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.conversion.ArrayToList"
+        return "lib.numpy.conversion.ArrayToList"
 
 
 class ArrayToScalar(GraphNode):
@@ -45,7 +45,7 @@ class ArrayToScalar(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.conversion.ArrayToScalar"
+        return "lib.numpy.conversion.ArrayToScalar"
 
 
 class ConvertToArray(GraphNode):
@@ -66,7 +66,7 @@ class ConvertToArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.conversion.ConvertToArray"
+        return "lib.numpy.conversion.ConvertToArray"
 
 
 class ConvertToAudio(GraphNode):
@@ -90,7 +90,7 @@ class ConvertToAudio(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.conversion.ConvertToAudio"
+        return "lib.numpy.conversion.ConvertToAudio"
 
 
 class ConvertToImage(GraphNode):
@@ -111,7 +111,7 @@ class ConvertToImage(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.conversion.ConvertToImage"
+        return "lib.numpy.conversion.ConvertToImage"
 
 
 class ListToArray(GraphNode):
@@ -131,7 +131,7 @@ class ListToArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.conversion.ListToArray"
+        return "lib.numpy.conversion.ListToArray"
 
 
 class ScalarToArray(GraphNode):
@@ -151,4 +151,4 @@ class ScalarToArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.conversion.ScalarToArray"
+        return "lib.numpy.conversion.ScalarToArray"

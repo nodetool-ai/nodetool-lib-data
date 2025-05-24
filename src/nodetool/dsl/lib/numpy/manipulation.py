@@ -30,7 +30,7 @@ class IndexArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.manipulation.IndexArray"
+        return "lib.numpy.manipulation.IndexArray"
 
 
 class MatMul(GraphNode):
@@ -55,7 +55,7 @@ class MatMul(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.manipulation.MatMul"
+        return "lib.numpy.manipulation.MatMul"
 
 
 class SliceArray(GraphNode):
@@ -88,7 +88,7 @@ class SliceArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.manipulation.SliceArray"
+        return "lib.numpy.manipulation.SliceArray"
 
 
 class SplitArray(GraphNode):
@@ -115,7 +115,7 @@ class SplitArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.manipulation.SplitArray"
+        return "lib.numpy.manipulation.SplitArray"
 
 
 class Stack(GraphNode):
@@ -138,7 +138,7 @@ class Stack(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.manipulation.Stack"
+        return "lib.numpy.manipulation.Stack"
 
 
 class TransposeArray(GraphNode):
@@ -159,4 +159,4 @@ class TransposeArray(GraphNode):
 
     @classmethod
     def get_node_type(cls):
-        return "lib.data.numpy.manipulation.TransposeArray"
+        return "lib.numpy.manipulation.TransposeArray"

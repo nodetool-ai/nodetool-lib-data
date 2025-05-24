@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from nodetool.nodes.lib.data.langchain import (
+from nodetool.nodes.lib.langchain import (
     RecursiveTextSplitter,
     MarkdownSplitter,
     SentenceSplitter,
