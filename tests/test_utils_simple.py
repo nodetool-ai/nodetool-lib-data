@@ -4,6 +4,7 @@ from nodetool.nodes.lib.numpy.utils import pad_arrays, convert_output
 from nodetool.metadata.types import NPArray
 from nodetool.workflows.processing_context import ProcessingContext
 
+
 @pytest.fixture
 def context():
     return ProcessingContext(user_id="test", auth_token="token")
