@@ -14,5 +14,5 @@ include = ["src/nodetool/package_metadata/nodetool-lib-data.json"]
 repository = "https://github.com/nodetool-ai/nodetool-lib-data"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 nodetool-core = { git = "https://github.com/nodetool-ai/nodetool-core.git", rev = "main" }
