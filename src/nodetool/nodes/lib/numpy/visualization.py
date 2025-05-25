@@ -1,4 +1,3 @@
-import numpy as np
 from io import BytesIO
 from enum import Enum
 from pydantic import Field

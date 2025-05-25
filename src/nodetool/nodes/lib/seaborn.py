@@ -15,18 +15,11 @@ from pydantic import Field
 import matplotlib
 
 matplotlib.use("Agg")
-from matplotlib import pyplot as plt
 import io
 import pandas as pd
 
 
 from typing import Any
-from pydantic import Field
-from nodetool.metadata.types import (
-    ImageRef,
-)
-from nodetool.workflows.base_node import BaseNode
-from nodetool.workflows.processing_context import ProcessingContext
 
 
 class SeabornStyle(str, Enum):

@@ -1,8 +1,6 @@
 import pytest
 import numpy as np
-from unittest.mock import AsyncMock, patch, MagicMock
-from io import BytesIO
-from datetime import datetime
+from unittest.mock import patch
 from PIL import Image
 import io
 
@@ -16,7 +14,6 @@ from nodetool.nodes.lib.numpy import (
     CosineArray,
     PowerArray,
     SqrtArray,
-    SaveArray,
     ConvertToArray,
     ConvertToImage,
     ConvertToAudio,
@@ -46,7 +43,7 @@ from nodetool.nodes.lib.numpy import (
     SplitArray,
 )
 from nodetool.workflows.processing_context import ProcessingContext
-from nodetool.metadata.types import NPArray, ImageRef, AudioRef, FolderRef
+from nodetool.metadata.types import NPArray, ImageRef, AudioRef
 
 
 @pytest.fixture

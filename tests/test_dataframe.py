@@ -4,7 +4,6 @@ from nodetool.workflows.processing_context import ProcessingContext
 from nodetool.metadata.types import (
     ColumnDef,
     DataframeRef,
-    FolderRef,
 )
 from nodetool.nodes.nodetool.data import (
     SelectColumn,
