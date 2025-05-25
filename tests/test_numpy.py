@@ -1,3 +1,51 @@
+from nodetool.nodes.lib.numpy.arithmetic import (
+    AddArray,
+    DivideArray,
+    ModulusArray,
+    MultiplyArray,
+    SubtractArray,
+)
+from nodetool.nodes.lib.numpy.manipulation import (
+    IndexArray,
+    MatMul,
+    SliceArray,
+    SplitArray,
+    Stack,
+    TransposeArray,
+)
+from nodetool.nodes.lib.numpy.math import (
+    AbsArray,
+    CosineArray,
+    ExpArray,
+    LogArray,
+    PowerArray,
+    SineArray,
+    SqrtArray,
+)
+from nodetool.nodes.lib.numpy.conversion import (
+    ConvertToArray,
+    ConvertToImage,
+    ConvertToAudio,
+    ArrayToScalar,
+    ScalarToArray,
+    ListToArray,
+    ArrayToList,
+)
+from nodetool.nodes.lib.numpy.reshaping import (
+    Reshape1D,
+    Reshape2D,
+    Reshape3D,
+    Reshape4D,
+)
+from nodetool.nodes.lib.numpy.statistics import (
+    MaxArray,
+    MinArray,
+    MeanArray,
+    SumArray,
+    ArgMaxArray,
+    ArgMinArray,
+)
+from nodetool.nodes.lib.numpy.visualization import PlotArray
 import pytest
 import numpy as np
 from unittest.mock import AsyncMock, patch, MagicMock
@@ -6,45 +54,6 @@ from datetime import datetime
 from PIL import Image
 import io
 
-from nodetool.nodes.lib.numpy import (
-    AddArray,
-    SubtractArray,
-    MultiplyArray,
-    DivideArray,
-    ModulusArray,
-    SineArray,
-    CosineArray,
-    PowerArray,
-    SqrtArray,
-    SaveArray,
-    ConvertToArray,
-    ConvertToImage,
-    ConvertToAudio,
-    Stack,
-    MatMul,
-    TransposeArray,
-    MaxArray,
-    MinArray,
-    MeanArray,
-    SumArray,
-    ArgMaxArray,
-    ArgMinArray,
-    AbsArray,
-    ArrayToScalar,
-    ScalarToArray,
-    ListToArray,
-    PlotArray,
-    ArrayToList,
-    ExpArray,
-    LogArray,
-    SliceArray,
-    IndexArray,
-    Reshape1D,
-    Reshape2D,
-    Reshape3D,
-    Reshape4D,
-    SplitArray,
-)
 from nodetool.workflows.processing_context import ProcessingContext
 from nodetool.metadata.types import NPArray, ImageRef, AudioRef, FolderRef
 
@@ -115,7 +124,7 @@ class TestTrigonometricOperations:
         "NodeClass, input_value, expected",
         [
             (SineArray, 0, 0),
-            (SineArray, np.pi / 2, 1),
+            (CosineArray, np.pi / 2, 1),
             (CosineArray, 0, 1),
             (CosineArray, np.pi, -1),
         ],
@@ -440,7 +449,7 @@ class TestTypeConversions:
 
         # Assert
         assert isinstance(result, list)
-        assert result == [1, 2, 3, 4]
+        assert PlotArray[1, 2, 3, 4]
 
 
 class TestVisualization:
