@@ -48,14 +48,12 @@ from nodetool.nodes.lib.numpy.statistics import (
 from nodetool.nodes.lib.numpy.visualization import PlotArray
 import pytest
 import numpy as np
-from unittest.mock import AsyncMock, patch, MagicMock
-from io import BytesIO
-from datetime import datetime
+from unittest.mock import patch
 from PIL import Image
 import io
 
 from nodetool.workflows.processing_context import ProcessingContext
-from nodetool.metadata.types import NPArray, ImageRef, AudioRef, FolderRef
+from nodetool.metadata.types import NPArray, ImageRef, AudioRef
 
 
 @pytest.fixture
@@ -124,7 +122,7 @@ class TestTrigonometricOperations:
         "NodeClass, input_value, expected",
         [
             (SineArray, 0, 0),
-            (CosineArray, np.pi / 2, 1),
+            (CosineArray, np.pi / 2, 0),
             (CosineArray, 0, 1),
             (CosineArray, np.pi, -1),
         ],
@@ -206,7 +204,12 @@ class TestConversionOperations:
         node = ConvertToAudio(values=array_data, sample_rate=44100)
 
         # Execute
-        result = await node.process(processing_context)
+        with patch.object(
+            processing_context,
+            "audio_from_segment",
+            return_value=AudioRef(asset_id="audio_id", data=b"bytes"),
+        ):
+            result = await node.process(processing_context)
 
         # Assert
         assert isinstance(result, AudioRef)
@@ -449,7 +452,7 @@ class TestTypeConversions:
 
         # Assert
         assert isinstance(result, list)
-        assert PlotArray[1, 2, 3, 4]
+        assert result == [1, 2, 3, 4]
 
 
 class TestVisualization:
