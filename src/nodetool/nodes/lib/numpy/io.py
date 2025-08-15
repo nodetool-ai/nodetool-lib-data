@@ -56,8 +56,9 @@ class SaveArray(BaseNode):
             content=buffer,
             parent_id=self.folder.asset_id if self.folder.is_set() else None,
         )
+        url = await context.get_asset_url(asset.id)
         return NPArray.from_numpy(
             array,
-            uri=asset.get_url,
+            uri=url,
             asset_id=asset.id,
         )
