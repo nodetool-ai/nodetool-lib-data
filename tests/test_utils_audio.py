@@ -1,6 +1,6 @@
 import numpy as np
 from pydub import AudioSegment
-from nodetool.nodes.lib.numpy.utils import numpy_to_audio_segment
+from nodetool.media.audio.audio_helpers import numpy_to_audio_segment
 
 
 def test_numpy_to_audio_segment_basic():

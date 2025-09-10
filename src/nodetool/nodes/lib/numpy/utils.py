@@ -8,22 +8,8 @@ from nodetool.metadata.types import NPArray
 from pydub import AudioSegment
 
 
-def numpy_to_audio_segment(arr: np.ndarray, sample_rate=44100) -> AudioSegment:
-    """
-    Convert a numpy array to an audio segment.
-
-    Args:
-        arr (np.ndarray): The numpy array to convert.
-        sample_rate (int): The sample rate of the audio segment.
-
-    Returns:
-        AudioSegment: The audio segment.
-    """
-    # Convert the float array to int16 format, which is used by WAV files.
-    arr_int16 = np.int16(arr * 32767.0).tobytes()
-
-    # Create a pydub AudioSegment from raw data.
-    return AudioSegment(arr_int16, sample_width=2, frame_rate=sample_rate, channels=1)
+# Import numpy_to_audio_segment from the centralized location
+from nodetool.media.audio.audio_helpers import numpy_to_audio_segment
 
 
 def pad_arrays(a: np.ndarray, b: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:

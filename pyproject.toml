@@ -1,23 +1,33 @@
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.poetry]
+[project]
 name = "nodetool-lib-data"
 version = "0.6.0"
 description = "Nodetool nodes for data processing."
 readme = "README.md"
-authors = ["Matthias Georgi <matti.georgi@gmail.com>"]
-packages = [{ include = "nodetool", from = "src" }]
-package-mode = true
-include = ["src/nodetool/package_metadata/nodetool-lib-data.json"]
-repository = "https://github.com/nodetool-ai/nodetool-lib-data"
+authors = [
+    {name = "Matthias Georgi", email = "matti.georgi@gmail.com"}
+]
+requires-python = ">=3.11"
 
-[tool.poetry.dependencies]
-python = "^3.11"
-nodetool-core = { git = "https://github.com/nodetool-ai/nodetool-core.git", rev = "main" }
+dependencies = [
+    "nodetool-core>=0.6.0,<0.7.0",
+]
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^7.4"
-pytest-asyncio = "^0.23"
-pytest-mock = "^3.12"
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-asyncio>=0.23",
+    "pytest-mock>=3.12",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nodetool"]
+artifacts = [
+    "src/nodetool/package_metadata/nodetool-lib-data.json",
+]
