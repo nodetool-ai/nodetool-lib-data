@@ -7,27 +7,16 @@ name = "nodetool-lib-data"
 version = "0.6.0"
 description = "Nodetool nodes for data processing."
 readme = "README.md"
-authors = [
-    {name = "Matthias Georgi", email = "matti.georgi@gmail.com"}
-]
+authors = [{ name = "Matthias Georgi", email = "matti.georgi@gmail.com" }]
 requires-python = ">=3.11"
 
-dependencies = [
-    "nodetool-core>=0.6.0,<0.7.0",
-]
+dependencies = ["nodetool-core>=0.6.0,<0.7.0"]
 
 [tool.hatch.metadata]
-allow-direct-references = true
 
 [project.optional-dependencies]
-dev = [
-    "pytest>=7.4",
-    "pytest-asyncio>=0.23",
-    "pytest-mock>=3.12",
-]
+dev = ["pytest>=7.4", "pytest-asyncio>=0.23", "pytest-mock>=3.12"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/nodetool"]
-artifacts = [
-    "src/nodetool/package_metadata/nodetool-lib-data.json",
-]
+artifacts = ["src/nodetool/package_metadata/nodetool-lib-data.json"]
