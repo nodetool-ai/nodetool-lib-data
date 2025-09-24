@@ -1,3 +1,4 @@
+from typing import ClassVar
 import numpy as np
 from pydantic import Field
 from nodetool.workflows.processing_context import ProcessingContext
@@ -37,7 +38,7 @@ class MatMul(BaseNode):
     - Perform matrix operations in neural networks
     """
 
-    _layout = "small"
+    _layout: ClassVar[str] = "small"
     a: NPArray = Field(default=NPArray(), description="First input array")
     b: NPArray = Field(default=NPArray(), description="Second input array")
 
@@ -58,7 +59,7 @@ class TransposeArray(BaseNode):
     - Implement certain linear algebra operations
     """
 
-    _layout = "small"
+    _layout: ClassVar[str] = "small"
     values: NPArray = Field(default=NPArray(), description="Array to transpose")
 
     async def process(self, context: ProcessingContext) -> NPArray:

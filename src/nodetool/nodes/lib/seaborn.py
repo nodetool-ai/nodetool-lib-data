@@ -263,7 +263,7 @@ class ChartRenderer(BaseNode):
             sns.despine(fig=fig)
 
         if self.trim_margins:
-            fig.tight_layout()
+            fig.tight_layout: ClassVar[str]()
 
         # Convert plot to image bytes
         buf = io.BytesIO()

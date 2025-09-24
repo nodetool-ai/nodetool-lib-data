@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import ClassVar, Tuple
 import numpy as np
 from pydantic import Field
 from nodetool.workflows.processing_context import ProcessingContext
@@ -38,7 +38,7 @@ async def convert_output(
 
 
 class BinaryOperation(BaseNode):
-    _layout = "small"
+    _layout: ClassVar[str] = "small"
     a: int | float | NPArray = Field(title="A", default=0.0)
     b: int | float | NPArray = Field(title="B", default=0.0)
 

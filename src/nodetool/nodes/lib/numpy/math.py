@@ -1,3 +1,4 @@
+from typing import ClassVar
 import numpy as np
 from pydantic import Field
 from nodetool.workflows.processing_context import ProcessingContext
@@ -18,7 +19,7 @@ class PowerArray(BaseNode):
     - Applying non-linear transformations to data
     """
 
-    _layout = "small"
+    _layout: ClassVar[str] = "small"
 
     base: float | int | NPArray = Field(title="Base", default=1.0)
     exponent: float | int | NPArray = Field(title="Exponent", default=2.0)
@@ -42,7 +43,7 @@ class SqrtArray(BaseNode):
     - Finding intermediate values in binary search
     """
 
-    _layout = "small"
+    _layout: ClassVar[str] = "small"
 
     values: NPArray = Field(default=NPArray(), description="Input array")
 
@@ -125,7 +126,7 @@ class SineArray(BaseNode):
     - Audio signal processing
     """
 
-    _layout = "small"
+    _layout: ClassVar[str] = "small"
 
     angle_rad: float | int | NPArray = Field(title="Angle (Radians)", default=0.0)
 
@@ -145,7 +146,7 @@ class CosineArray(BaseNode):
     - Phase calculations in signal processing
     """
 
-    _layout = "small"
+    _layout: ClassVar[str] = "small"
 
     angle_rad: float | int | NPArray = Field(title="Angle (Radians)", default=0.0)
 
